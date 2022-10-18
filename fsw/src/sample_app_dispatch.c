@@ -43,7 +43,8 @@ static const SAMPLE_APP_Application_Component_Telecommand_DispatchTable_t SAMPLE
         {
                 .NoopCmd_indication = SAMPLE_APP_Noop,
                 .ResetCountersCmd_indication = SAMPLE_APP_ResetCounters,
-                .ProcessCmd_indication = SAMPLE_APP_Process
+                .ProcessCmd_indication = SAMPLE_APP_Process,
+                .DoExampleCmd_indication = SAMPLE_APP_DoExample
         },
         .SEND_HK =
         {
