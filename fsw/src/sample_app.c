@@ -1,29 +1,25 @@
-/*******************************************************************************
-**
-**      GSC-18128-1, "Core Flight Executive Version 6.7"
-**
-**      Copyright (c) 2006-2019 United States Government as represented by
-**      the Administrator of the National Aeronautics and Space Administration.
-**      All Rights Reserved.
-**
-**      Licensed under the Apache License, Version 2.0 (the "License");
-**      you may not use this file except in compliance with the License.
-**      You may obtain a copy of the License at
-**
-**        http://www.apache.org/licenses/LICENSE-2.0
-**
-**      Unless required by applicable law or agreed to in writing, software
-**      distributed under the License is distributed on an "AS IS" BASIS,
-**      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-**      See the License for the specific language governing permissions and
-**      limitations under the License.
-**
-** File: sample_app.c
-**
-** Purpose:
-**   This file contains the source code for the Sample App.
-**
-*******************************************************************************/
+/************************************************************************
+ * NASA Docket No. GSC-18,719-1, and identified as “core Flight System: Bootes”
+ *
+ * Copyright (c) 2020 United States Government as represented by the
+ * Administrator of the National Aeronautics and Space Administration.
+ * All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ************************************************************************/
+
+/**
+ * \file
+ *   This file contains the source code for the Sample App.
+ */
 
 /*
 ** Include Files:
@@ -43,7 +39,8 @@
 SAMPLE_APP_Data_t SAMPLE_APP_Data;
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  * *  * * * * **/
-/* SAMPLE_APP_Main() -- Application entry point and main process loop         */
+/*                                                                            */
+/* Application entry point and main process loop                              */
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  * *  * * * * **/
 void SAMPLE_APP_Main(void)
@@ -104,12 +101,11 @@ void SAMPLE_APP_Main(void)
     CFE_ES_PerfLogExit(SAMPLE_APP_PERF_ID);
 
     CFE_ES_ExitApp(SAMPLE_APP_Data.RunStatus);
-
-} /* End of SAMPLE_APP_Main() */
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  */
 /*                                                                            */
-/* SAMPLE_APP_Init() --  initialization                                       */
+/* Initialization                                                             */
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 int32 SAMPLE_APP_Init(void)
@@ -133,31 +129,13 @@ int32 SAMPLE_APP_Init(void)
     SAMPLE_APP_Data.PipeName[sizeof(SAMPLE_APP_Data.PipeName) - 1] = 0;
 
     /*
-    ** Initialize event filter table...
-    */
-    SAMPLE_APP_Data.EventFilters[0].EventID = SAMPLE_APP_STARTUP_INF_EID;
-    SAMPLE_APP_Data.EventFilters[0].Mask    = 0x0000;
-    SAMPLE_APP_Data.EventFilters[1].EventID = SAMPLE_APP_COMMAND_ERR_EID;
-    SAMPLE_APP_Data.EventFilters[1].Mask    = 0x0000;
-    SAMPLE_APP_Data.EventFilters[2].EventID = SAMPLE_APP_COMMANDNOP_INF_EID;
-    SAMPLE_APP_Data.EventFilters[2].Mask    = 0x0000;
-    SAMPLE_APP_Data.EventFilters[3].EventID = SAMPLE_APP_COMMANDRST_INF_EID;
-    SAMPLE_APP_Data.EventFilters[3].Mask    = 0x0000;
-    SAMPLE_APP_Data.EventFilters[4].EventID = SAMPLE_APP_INVALID_MSGID_ERR_EID;
-    SAMPLE_APP_Data.EventFilters[4].Mask    = 0x0000;
-    SAMPLE_APP_Data.EventFilters[5].EventID = SAMPLE_APP_LEN_ERR_EID;
-    SAMPLE_APP_Data.EventFilters[5].Mask    = 0x0000;
-    SAMPLE_APP_Data.EventFilters[6].EventID = SAMPLE_APP_PIPE_ERR_EID;
-    SAMPLE_APP_Data.EventFilters[6].Mask    = 0x0000;
-
-    /*
     ** Register the events
     */
-    status = CFE_EVS_Register(SAMPLE_APP_Data.EventFilters, SAMPLE_APP_EVENT_COUNTS, CFE_EVS_EventFilter_BINARY);
+    status = CFE_EVS_Register(NULL, 0, CFE_EVS_EventFilter_BINARY);
     if (status != CFE_SUCCESS)
     {
         CFE_ES_WriteToSysLog("Sample App: Error Registering Events, RC = 0x%08lX\n", (unsigned long)status);
-        return (status);
+        return status;
     }
 
     /*
@@ -173,7 +151,7 @@ int32 SAMPLE_APP_Init(void)
     if (status != CFE_SUCCESS)
     {
         CFE_ES_WriteToSysLog("Sample App: Error creating pipe, RC = 0x%08lX\n", (unsigned long)status);
-        return (status);
+        return status;
     }
 
     /*
@@ -183,7 +161,7 @@ int32 SAMPLE_APP_Init(void)
     if (status != CFE_SUCCESS)
     {
         CFE_ES_WriteToSysLog("Sample App: Error Subscribing to HK request, RC = 0x%08lX\n", (unsigned long)status);
-        return (status);
+        return status;
     }
 
     /*
@@ -194,7 +172,7 @@ int32 SAMPLE_APP_Init(void)
     {
         CFE_ES_WriteToSysLog("Sample App: Error Subscribing to Command, RC = 0x%08lX\n", (unsigned long)status);
 
-        return (status);
+        return status;
     }
 
     /*
@@ -206,7 +184,7 @@ int32 SAMPLE_APP_Init(void)
     {
         CFE_ES_WriteToSysLog("Sample App: Error Registering Table, RC = 0x%08lX\n", (unsigned long)status);
 
-        return (status);
+        return status;
     }
     else
     {
@@ -216,12 +194,10 @@ int32 SAMPLE_APP_Init(void)
     CFE_EVS_SendEvent(SAMPLE_APP_STARTUP_INF_EID, CFE_EVS_EventType_INFORMATION, "SAMPLE App Initialized.%s",
                       SAMPLE_APP_VERSION_STRING);
 
-    return (CFE_SUCCESS);
-
-} /* End of SAMPLE_APP_Init() */
+    return CFE_SUCCESS;
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-/*  Name:  SAMPLE_APP_ProcessCommandPacket                                    */
 /*                                                                            */
 /*  Purpose:                                                                  */
 /*     This routine will process any packet that is received on the SAMPLE    */
@@ -249,14 +225,11 @@ void SAMPLE_APP_ProcessCommandPacket(CFE_SB_Buffer_t *SBBufPtr)
                               "SAMPLE: invalid command packet,MID = 0x%x", (unsigned int)CFE_SB_MsgIdToValue(MsgId));
             break;
     }
-
-    return;
-
-} /* End SAMPLE_APP_ProcessCommandPacket */
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 /*                                                                            */
-/* SAMPLE_APP_ProcessGroundCommand() -- SAMPLE ground commands                */
+/* SAMPLE ground commands                                                     */
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 void SAMPLE_APP_ProcessGroundCommand(CFE_SB_Buffer_t *SBBufPtr)
@@ -300,13 +273,9 @@ void SAMPLE_APP_ProcessGroundCommand(CFE_SB_Buffer_t *SBBufPtr)
                               "Invalid ground command code: CC = %d", CommandCode);
             break;
     }
-
-    return;
-
-} /* End of SAMPLE_APP_ProcessGroundCommand() */
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-/*  Name:  SAMPLE_APP_ReportHousekeeping                                          */
 /*                                                                            */
 /*  Purpose:                                                                  */
 /*         This function is triggered in response to a task telemetry request */
@@ -339,28 +308,24 @@ int32 SAMPLE_APP_ReportHousekeeping(const CFE_MSG_CommandHeader_t *Msg)
     }
 
     return CFE_SUCCESS;
-
-} /* End of SAMPLE_APP_ReportHousekeeping() */
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 /*                                                                            */
-/* SAMPLE_APP_Noop -- SAMPLE NOOP commands                                        */
+/* SAMPLE NOOP commands                                                       */
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 int32 SAMPLE_APP_Noop(const SAMPLE_APP_NoopCmd_t *Msg)
 {
-
     SAMPLE_APP_Data.CmdCounter++;
 
     CFE_EVS_SendEvent(SAMPLE_APP_COMMANDNOP_INF_EID, CFE_EVS_EventType_INFORMATION, "SAMPLE: NOOP command %s",
                       SAMPLE_APP_VERSION);
 
     return CFE_SUCCESS;
-
-} /* End of SAMPLE_APP_Noop */
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-/*  Name:  SAMPLE_APP_ResetCounters                                               */
 /*                                                                            */
 /*  Purpose:                                                                  */
 /*         This function resets all the global counter variables that are     */
@@ -369,18 +334,15 @@ int32 SAMPLE_APP_Noop(const SAMPLE_APP_NoopCmd_t *Msg)
 /* * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * *  * *  * * * * */
 int32 SAMPLE_APP_ResetCounters(const SAMPLE_APP_ResetCountersCmd_t *Msg)
 {
-
     SAMPLE_APP_Data.CmdCounter = 0;
     SAMPLE_APP_Data.ErrCounter = 0;
 
     CFE_EVS_SendEvent(SAMPLE_APP_COMMANDRST_INF_EID, CFE_EVS_EventType_INFORMATION, "SAMPLE: RESET command");
 
     return CFE_SUCCESS;
-
-} /* End of SAMPLE_APP_ResetCounters() */
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-/*  Name:  SAMPLE_APP_Process                                                     */
 /*                                                                            */
 /*  Purpose:                                                                  */
 /*         This function Process Ground Station Command                       */
@@ -417,12 +379,11 @@ int32 SAMPLE_APP_Process(const SAMPLE_APP_ProcessCmd_t *Msg)
     SAMPLE_LIB_Function();
 
     return CFE_SUCCESS;
-
-} /* End of SAMPLE_APP_ProcessCC */
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 /*                                                                            */
-/* SAMPLE_APP_VerifyCmdLength() -- Verify command packet length                   */
+/* Verify command packet length                                               */
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 bool SAMPLE_APP_VerifyCmdLength(CFE_MSG_Message_t *MsgPtr, size_t ExpectedLength)
@@ -452,14 +413,12 @@ bool SAMPLE_APP_VerifyCmdLength(CFE_MSG_Message_t *MsgPtr, size_t ExpectedLength
         SAMPLE_APP_Data.ErrCounter++;
     }
 
-    return (result);
-
-} /* End of SAMPLE_APP_VerifyCmdLength() */
+    return result;
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /*                                                                 */
-/* SAMPLE_APP_TblValidationFunc -- Verify contents of First Table      */
-/* buffer contents                                                 */
+/* Verify contents of First Table buffer contents                  */
 /*                                                                 */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 int32 SAMPLE_APP_TblValidationFunc(void *TblData)
@@ -477,13 +436,11 @@ int32 SAMPLE_APP_TblValidationFunc(void *TblData)
     }
 
     return ReturnCode;
-
-} /* End of SAMPLE_APP_TBLValidationFunc() */
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /*                                                                 */
-/* SAMPLE_APP_GetCrc -- Output CRC                                     */
-/*                                                                 */
+/* Output CRC                                                      */
 /*                                                                 */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 void SAMPLE_APP_GetCrc(const char *TableName)
@@ -502,7 +459,4 @@ void SAMPLE_APP_GetCrc(const char *TableName)
         Crc = TblInfoPtr.Crc;
         CFE_ES_WriteToSysLog("Sample App: CRC: 0x%08lX\n\n", (unsigned long)Crc);
     }
-
-    return;
-
-} /* End of SAMPLE_APP_GetCrc */
+}
