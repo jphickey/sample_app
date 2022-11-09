@@ -29,6 +29,9 @@
 #include "sample_app.h"
 #include "sample_app_table.h"
 
+#include "cfe_mission_eds_parameters.h"
+#include "scriptengine.h"
+
 /* The sample_lib module provides the SAMPLE_LIB_Function() prototype */
 #include <string.h>
 #include "sample_lib.h"
@@ -191,6 +194,8 @@ int32 SAMPLE_APP_Init(void)
         status = CFE_TBL_Load(SAMPLE_APP_Data.TblHandles[0], CFE_TBL_SRC_FILE, SAMPLE_APP_TABLE_FILE);
     }
 
+    SCRIPTENGINE_LoadFile("./cf/handler.lua");
+
     CFE_EVS_SendEvent(SAMPLE_APP_STARTUP_INF_EID, CFE_EVS_EventType_INFORMATION, "SAMPLE App Initialized.%s",
                       SAMPLE_APP_VERSION_STRING);
 
@@ -311,6 +316,10 @@ int32 SAMPLE_APP_Process(const SAMPLE_APP_ProcessCmd_t *Msg)
 int32 SAMPLE_APP_DoExample(const SAMPLE_APP_DoExampleCmd_t *Msg)
 {
     CFE_ES_WriteToSysLog("%s: Command Value=%u", __func__, (unsigned int)Msg->Payload.Value);
+
+    /* JPHFIX: Lua bindings need update to allow proper "const" objects */
+    SCRIPTENGINE_CallFunctionArg("TestFunc2", (void*)&Msg->Payload,
+        EDS_INDEX(SAMPLE_APP), SAMPLE_APP_DoExample_Payload_DATADICTIONARY);
 
     return CFE_SUCCESS;
 }

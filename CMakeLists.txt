@@ -11,7 +11,7 @@ add_cfe_app(sample_app
 
 # Include the public API from sample_lib to demonstrate how
 # to call library-provided functions
-add_cfe_app_dependency(sample_app sample_lib)
+add_cfe_app_dependency(sample_app sample_lib scriptengine)
 
 # Add table
 add_cfe_tables(sampleAppTable fsw/tables/sample_app_tbl.c)
@@ -23,3 +23,9 @@ add_cfe_tables(sampleAppTable fsw/tables/sample_app_tbl.c)
 if (ENABLE_UNIT_TESTS)
   add_subdirectory(unit-test)
 endif (ENABLE_UNIT_TESTS)
+
+if (INSTALL_TARGET_LIST)
+  foreach(TGT ${INSTALL_TARGET_LIST})
+    install(FILES scripts/handler.lua DESTINATION ${TGT}/${INSTALL_SUBDIR})
+  endforeach()
+endif()
