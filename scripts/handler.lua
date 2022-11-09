@@ -1,19 +1,17 @@
 print "handler.lua is being loaded!"
 
-function TestFunc2(msg)
-    print "This is TestFunc2()"
+function TestMessageHandler(inmsg)
+    print "This is TestMessageHandler()"
 
-    if (msg) then
-        print ("Got A Message: " .. tostring(msg))
+    if (inmsg) then
+        print ("Input Message: " .. tostring(inmsg))
 
         -- Using the "call" syntax returns the actual value
-        print ("The Input value is: " .. msg.Value())
+        print ("The Input value is: " .. inmsg.Value())
     end
 
-    cmd = EdsDB.GetInterface("CFE_ES/Application/CMD")
-    testobj = EdsDB.NewMessage(cmd, "NoopCMD")
+    intf = EdsDB.GetInterface("CFE_ES/Application/CMD")
+    outmsg = EdsDB.NewMessage(intf, "NoopCMD")
 
-    print("obj=" .. EdsDB.ToHexString(testobj))
-
-    CFE.SendMsg(testobj)
+    CFE.SendMsg(outmsg)
 end
