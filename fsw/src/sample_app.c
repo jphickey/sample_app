@@ -27,7 +27,7 @@
 #include "sample_app_events.h"
 #include "sample_app_version.h"
 #include "sample_app.h"
-#include "sample_app_table.h"
+#include "sample_app_tbl.h"
 
 /* The sample_lib module provides the SAMPLE_LIB_Function() prototype */
 #include <string.h>

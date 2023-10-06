@@ -18,22 +18,19 @@
 
 /**
  * @file
+ *   SAMPLE_APP Application Public Definitions
  *
- * Define sample app table
- */
-
-#ifndef SAMPLE_APP_TABLE_H
-#define SAMPLE_APP_TABLE_H
-
-#include "sample_app_eds_typedefs.h"
-
-/*
- * The EDS defines the table type name as "SampleAppTable" so it matches
- * the runtime table name, but the source code refers to the type
- * as SAMPLE_APP_Table_t
+ * This provides default values for configurable items that affect
+ * the interface(s) of this module.  This includes the CMD/TLM message
+ * interface, tables definitions, and any other data products that
+ * serve to exchange information with other entities.
  *
- * This discrepancy can be worked around with a typedef for now
+ * @note This file may be overridden/superceded by mission-provided defintions
+ * either by overriding this header or by generating definitions from a command/data
+ * dictionary tool.
  */
-typedef SAMPLE_APP_SampleAppTable_t SAMPLE_APP_Table_t;
+#ifndef SAMPLE_APP_INTERFACE_CFG_H
+#define SAMPLE_APP_INTERFACE_CFG_H
 
-#endif /* SAMPLE_APP_TABLE_H */
+
+#endif

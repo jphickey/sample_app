@@ -18,13 +18,28 @@
 
 /**
  * @file
+ *   Specification for the SAMPLE_APP command function codes
  *
- * Define Sample App Performance IDs
+ * @note
+ *   This file should be strictly limited to the command/function code (CC)
+ *   macro definitions.  Other definitions such as enums, typedefs, or other
+ *   macros should be placed in the msgdefs.h or msg.h files.
  */
+#ifndef SAMPLE_APP_FCNCODES_H
+#define SAMPLE_APP_FCNCODES_H
 
-#ifndef SAMPLE_APP_PERFIDS_H
-#define SAMPLE_APP_PERFIDS_H
+/************************************************************************
+ * Macro Definitions
+ ************************************************************************/
 
-#define SAMPLE_APP_PERF_ID 91
+/*
+** SAMPLE App command codes
+*/
+#define SAMPLE_APP_NOOP_CC           0
+#define SAMPLE_APP_RESET_COUNTERS_CC 1
+#define SAMPLE_APP_PROCESS_CC        2
 
-#endif /* SAMPLE_APP_PERFIDS_H */
+
+
+
+#endif

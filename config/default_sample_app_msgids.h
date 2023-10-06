@@ -18,21 +18,15 @@
 
 /**
  * @file
- *
- * Define SAMPLE App  Messages and info
+ *   SAMPLE_APP Application Message IDs
  */
+#ifndef SAMPLE_APP_MSGIDS_H
+#define SAMPLE_APP_MSGIDS_H
 
-#ifndef SAMPLE_APP_MSG_H
-#define SAMPLE_APP_MSG_H
+#include "cfe_msgids.h"
 
-/*
- * EDS-defined function codes (*_CC)
- */
-#include "sample_app_eds_cc.h"
+#define SAMPLE_APP_CMD_MID     CFE_PLATFORM_CMD_TOPICID_TO_MID(CFE_MISSION_SAMPLE_APP_CMD_TOPICID)
+#define SAMPLE_APP_SEND_HK_MID CFE_PLATFORM_CMD_TOPICID_TO_MID(CFE_MISSION_SAMPLE_APP_SEND_HK_TOPICID)
+#define SAMPLE_APP_HK_TLM_MID  CFE_PLATFORM_TLM_TOPICID_TO_MID(CFE_MISSION_SAMPLE_APP_HK_TLM_TOPICID)
 
-/*
- * EDS-defined message data types
- */
-#include "sample_app_eds_typedefs.h"
-
-#endif /* SAMPLE_APP_MSG_H */
+#endif
