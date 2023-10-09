@@ -27,6 +27,10 @@ if (CFE_EDS_ENABLED_BUILD)
   # In an EDS-based build, these files come generated from the EDS tool
   set(SAMPLE_APP_CFGFILE_SRC_sample_app_interface_cfg "sample_app_eds_designparameters.h")
   set(SAMPLE_APP_CFGFILE_SRC_sample_app_tbldefs       "sample_app_eds_typedefs.h")
+  set(SAMPLE_APP_CFGFILE_SRC_sample_app_tblstruct     "sample_app_eds_typedefs.h")
+  set(SAMPLE_APP_CFGFILE_SRC_sample_app_msgdefs       "sample_app_eds_typedefs.h")
+  set(SAMPLE_APP_CFGFILE_SRC_sample_app_msgstruct     "sample_app_eds_typedefs.h")
+  set(SAMPLE_APP_CFGFILE_SRC_sample_app_fcncodes      "sample_app_eds_cc.h")
 
 endif(CFE_EDS_ENABLED_BUILD)
 
