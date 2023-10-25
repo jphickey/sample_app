@@ -18,19 +18,28 @@
 
 /**
  * @file
+ *   Specification for the SAMPLE_APP table related
+ *   constant definitions.
  *
- * Define Sample App Message IDs
- *
- * \note The Sample App assumes default configuration which uses V1 of message id implementation
+ * @note
+ *   These Macro definitions have been put in this file (instead of
+ *   sample_app_tbl.h). DO NOT PUT ANY TYPEDEFS OR
+ *   STRUCTURE DEFINITIONS IN THIS FILE!
+ *   ADD THEM TO sample_app_tbl.h IF NEEDED!
  */
+#ifndef SAMPLE_APP_TBLDEFS_H
+#define SAMPLE_APP_TBLDEFS_H
 
-#ifndef SAMPLE_APP_MSGIDS_H
-#define SAMPLE_APP_MSGIDS_H
+#include "common_types.h"
+#include "sample_app_mission_cfg.h"
 
-/* V1 Command Message IDs must be 0x18xx */
-#define SAMPLE_APP_CMD_MID     0x1882
-#define SAMPLE_APP_SEND_HK_MID 0x1883
-/* V1 Telemetry Message IDs must be 0x08xx */
-#define SAMPLE_APP_HK_TLM_MID 0x0883
+/*
+** Table structure
+*/
+typedef struct
+{
+    uint16 Int1;
+    uint16 Int2;
+} SAMPLE_APP_Table_t;
 
-#endif /* SAMPLE_APP_MSGIDS_H */
+#endif

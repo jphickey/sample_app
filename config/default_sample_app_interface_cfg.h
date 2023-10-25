@@ -18,20 +18,18 @@
 
 /**
  * @file
+ *   SAMPLE_APP Application Public Definitions
  *
- * Define SAMPLE App Events IDs
+ * This provides default values for configurable items that affect
+ * the interface(s) of this module.  This includes the CMD/TLM message
+ * interface, tables definitions, and any other data products that
+ * serve to exchange information with other entities.
+ *
+ * @note This file may be overridden/superceded by mission-provided defintions
+ * either by overriding this header or by generating definitions from a command/data
+ * dictionary tool.
  */
+#ifndef SAMPLE_APP_INTERFACE_CFG_H
+#define SAMPLE_APP_INTERFACE_CFG_H
 
-#ifndef SAMPLE_APP_EVENTS_H
-#define SAMPLE_APP_EVENTS_H
-
-#define SAMPLE_APP_RESERVED_EID          0
-#define SAMPLE_APP_STARTUP_INF_EID       1
-#define SAMPLE_APP_COMMAND_ERR_EID       2
-#define SAMPLE_APP_COMMANDNOP_INF_EID    3
-#define SAMPLE_APP_COMMANDRST_INF_EID    4
-#define SAMPLE_APP_INVALID_MSGID_ERR_EID 5
-#define SAMPLE_APP_LEN_ERR_EID           6
-#define SAMPLE_APP_PIPE_ERR_EID          7
-
-#endif /* SAMPLE_APP_EVENTS_H */
+#endif
