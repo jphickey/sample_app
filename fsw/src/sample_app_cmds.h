@@ -18,28 +18,22 @@
 
 /**
  * @file
- *   Specification for the SAMPLE_APP table related
- *   constant definitions.
- *
- * @note
- *   These Macro definitions have been put in this file (instead of
- *   sample_app_tbl.h). DO NOT PUT ANY TYPEDEFS OR
- *   STRUCTURE DEFINITIONS IN THIS FILE!
- *   ADD THEM TO sample_app_tbl.h IF NEEDED!
+ *   This file contains the prototypes for the Sample App Ground Command-handling functions
  */
-#ifndef SAMPLE_APP_TBLDEFS_H
-#define SAMPLE_APP_TBLDEFS_H
 
-#include "common_types.h"
-#include "sample_app_mission_cfg.h"
+#ifndef SAMPLE_APP_CMDS_H
+#define SAMPLE_APP_CMDS_H
 
 /*
-** Table structure
+** Required header files.
 */
-typedef struct
-{
-    uint16 Int1;
-    uint16 Int2;
-} SAMPLE_APP_Table_t;
+#include "cfe_error.h"
+#include "sample_app_msg.h"
 
-#endif
+CFE_Status_t SAMPLE_APP_SendHkCmd(const SAMPLE_APP_SendHkCmd_t *Msg);
+CFE_Status_t SAMPLE_APP_ResetCountersCmd(const SAMPLE_APP_ResetCountersCmd_t *Msg);
+CFE_Status_t SAMPLE_APP_ProcessCmd(const SAMPLE_APP_ProcessCmd_t *Msg);
+CFE_Status_t SAMPLE_APP_NoopCmd(const SAMPLE_APP_NoopCmd_t *Msg);
+CFE_Status_t SAMPLE_APP_DoExampleCmd(const SAMPLE_APP_DoExampleCmd_t *Msg);
+
+#endif /* SAMPLE_APP_CMDS_H */

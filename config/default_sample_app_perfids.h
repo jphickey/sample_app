@@ -25,5 +25,4 @@
 
 #define SAMPLE_APP_PERF_ID 91
 
-
 #endif

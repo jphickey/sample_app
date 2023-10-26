@@ -18,28 +18,20 @@
 
 /**
  * @file
- *   Specification for the SAMPLE_APP table related
- *   constant definitions.
  *
- * @note
- *   These Macro definitions have been put in this file (instead of
- *   sample_app_tbl.h). DO NOT PUT ANY TYPEDEFS OR
- *   STRUCTURE DEFINITIONS IN THIS FILE!
- *   ADD THEM TO sample_app_tbl.h IF NEEDED!
+ * Define Sample App Events IDs
  */
-#ifndef SAMPLE_APP_TBLDEFS_H
-#define SAMPLE_APP_TBLDEFS_H
 
-#include "common_types.h"
-#include "sample_app_mission_cfg.h"
+#ifndef SAMPLE_APP_EVENTS_H
+#define SAMPLE_APP_EVENTS_H
 
-/*
-** Table structure
-*/
-typedef struct
-{
-    uint16 Int1;
-    uint16 Int2;
-} SAMPLE_APP_Table_t;
+#define SAMPLE_APP_RESERVED_EID          0
+#define SAMPLE_APP_STARTUP_INF_EID       1
+#define SAMPLE_APP_COMMAND_ERR_EID       2
+#define SAMPLE_APP_COMMANDNOP_INF_EID    3
+#define SAMPLE_APP_COMMANDRST_INF_EID    4
+#define SAMPLE_APP_INVALID_MSGID_ERR_EID 5
+#define SAMPLE_APP_LEN_ERR_EID           6
+#define SAMPLE_APP_PIPE_ERR_EID          7
 
-#endif
+#endif /* SAMPLE_APP_EVENTS_H */

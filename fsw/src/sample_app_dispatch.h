@@ -18,28 +18,21 @@
 
 /**
  * @file
- *   Specification for the SAMPLE_APP table related
- *   constant definitions.
  *
- * @note
- *   These Macro definitions have been put in this file (instead of
- *   sample_app_tbl.h). DO NOT PUT ANY TYPEDEFS OR
- *   STRUCTURE DEFINITIONS IN THIS FILE!
- *   ADD THEM TO sample_app_tbl.h IF NEEDED!
+ * Main header file for the SAMPLE application
  */
-#ifndef SAMPLE_APP_TBLDEFS_H
-#define SAMPLE_APP_TBLDEFS_H
 
-#include "common_types.h"
-#include "sample_app_mission_cfg.h"
+#ifndef SAMPLE_APP_DISPATCH_H
+#define SAMPLE_APP_DISPATCH_H
 
 /*
-** Table structure
+** Required header files.
 */
-typedef struct
-{
-    uint16 Int1;
-    uint16 Int2;
-} SAMPLE_APP_Table_t;
+#include "cfe.h"
+#include "sample_app_msg.h"
 
-#endif
+void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t *SBBufPtr);
+void SAMPLE_APP_ProcessGroundCommand(const CFE_SB_Buffer_t *SBBufPtr);
+bool SAMPLE_APP_VerifyCmdLength(const CFE_MSG_Message_t *MsgPtr, size_t ExpectedLength);
+
+#endif /* SAMPLE_APP_DISPATCH_H */

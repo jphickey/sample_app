@@ -1,7 +1,8 @@
 /************************************************************************
- * NASA Docket No. GSC-18,719-1, and identified as “core Flight System: Bootes”
+ * NASA Docket No. GSC-18,920-1, and identified as “Core Flight
+ * System (cFS) Health & Safety (HS) Application version 2.4.1”
  *
- * Copyright (c) 2020 United States Government as represented by the
+ * Copyright (c) 2021 United States Government as represented by the
  * Administrator of the National Aeronautics and Space Administration.
  * All Rights Reserved.
  *
@@ -16,30 +17,11 @@
  * limitations under the License.
  ************************************************************************/
 
-/**
- * @file
- *   Specification for the SAMPLE_APP table related
- *   constant definitions.
- *
- * @note
- *   These Macro definitions have been put in this file (instead of
- *   sample_app_tbl.h). DO NOT PUT ANY TYPEDEFS OR
- *   STRUCTURE DEFINITIONS IN THIS FILE!
- *   ADD THEM TO sample_app_tbl.h IF NEEDED!
- */
-#ifndef SAMPLE_APP_TBLDEFS_H
-#define SAMPLE_APP_TBLDEFS_H
+#include "sample_app.h"
 
-#include "common_types.h"
-#include "sample_app_mission_cfg.h"
+/* UT includes */
+#include "uttest.h"
+#include "utassert.h"
+#include "utstubs.h"
 
-/*
-** Table structure
-*/
-typedef struct
-{
-    uint16 Int1;
-    uint16 Int2;
-} SAMPLE_APP_Table_t;
-
-#endif
+SAMPLE_APP_Data_t SAMPLE_APP_Data;

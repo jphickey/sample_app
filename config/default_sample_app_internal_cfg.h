@@ -41,5 +41,4 @@
 
 #define SAMPLE_APP_TBL_ELEMENT_1_MAX 10
 
-
 #endif

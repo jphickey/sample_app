@@ -16,30 +16,30 @@
  * limitations under the License.
  ************************************************************************/
 
-/**
- * @file
- *   Specification for the SAMPLE_APP table related
- *   constant definitions.
- *
- * @note
- *   These Macro definitions have been put in this file (instead of
- *   sample_app_tbl.h). DO NOT PUT ANY TYPEDEFS OR
- *   STRUCTURE DEFINITIONS IN THIS FILE!
- *   ADD THEM TO sample_app_tbl.h IF NEEDED!
- */
-#ifndef SAMPLE_APP_TBLDEFS_H
-#define SAMPLE_APP_TBLDEFS_H
+/*
+** Purpose:
+** Coverage Unit Test cases for the SAMPLE Application
+**
+** Notes:
+** This implements various test cases to exercise all code
+** paths through all functions defined in the SAMPLE application.
+**
+** It is primarily focused at providing examples of the various
+** stub configurations, hook functions, and wrapper calls that
+** are often needed when coercing certain code paths through
+** complex functions.
+*/
+
+#ifndef SETUP_H
+#define SETUP_H
 
 #include "common_types.h"
-#include "sample_app_mission_cfg.h"
 
-/*
-** Table structure
-*/
-typedef struct
-{
-    uint16 Int1;
-    uint16 Int2;
-} SAMPLE_APP_Table_t;
+#include "utassert.h"
+#include "uttest.h"
+#include "utstubs.h"
+
+void Sample_UT_Setup(void);
+void Sample_UT_TearDown(void);
 
 #endif

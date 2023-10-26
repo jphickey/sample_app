@@ -45,31 +45,35 @@
 ** allows them to change independently in the future without changing the prototype
 ** of the handler function
 */
-typedef  struct
+typedef struct
 {
     CFE_MSG_CommandHeader_t CommandHeader; /**< \brief Command header */
 } SAMPLE_APP_NoopCmd_t;
 
-typedef  struct
+typedef struct
 {
     CFE_MSG_CommandHeader_t CommandHeader; /**< \brief Command header */
 } SAMPLE_APP_ResetCountersCmd_t;
 
-typedef  struct
+typedef struct
 {
     CFE_MSG_CommandHeader_t CommandHeader; /**< \brief Command header */
 } SAMPLE_APP_ProcessCmd_t;
 
 /*************************************************************************/
 /*
-** Type definition (SAMPLE App housekeeping)
+** Type definition (Sample App housekeeping)
 */
+
+typedef struct
+{
+    CFE_MSG_CommandHeader_t CommandHeader; /**< \brief Command header */
+} SAMPLE_APP_SendHkCmd_t;
 
 typedef struct
 {
     CFE_MSG_TelemetryHeader_t  TelemetryHeader; /**< \brief Telemetry header */
     SAMPLE_APP_HkTlm_Payload_t Payload;         /**< \brief Telemetry payload */
 } SAMPLE_APP_HkTlm_t;
-
 
 #endif /* SAMPLE_APP_MSGSTRUCT_H */
