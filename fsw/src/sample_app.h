@@ -33,10 +33,12 @@
 #include "sample_app_mission_cfg.h"
 #include "sample_app_platform_cfg.h"
 
+#include "sample_app_mission_cfg.h"
+#include "sample_app_platform_cfg.h"
+
 #include "sample_app_perfids.h"
 #include "sample_app_msgids.h"
 #include "sample_app_msg.h"
-
 
 /************************************************************************
 ** Type Definitions

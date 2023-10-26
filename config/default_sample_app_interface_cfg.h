@@ -32,5 +32,4 @@
 #ifndef SAMPLE_APP_INTERFACE_CFG_H
 #define SAMPLE_APP_INTERFACE_CFG_H
 
-
 #endif

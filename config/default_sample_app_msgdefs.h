@@ -31,7 +31,7 @@
 
 /*************************************************************************/
 /*
-** Type definition (SAMPLE App housekeeping)
+** Type definition (Sample App housekeeping)
 */
 
 typedef struct
@@ -40,6 +40,5 @@ typedef struct
     uint8 CommandCounter;
     uint8 spare[2];
 } SAMPLE_APP_HkTlm_Payload_t;
-
 
 #endif

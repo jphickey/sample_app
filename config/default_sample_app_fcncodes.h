@@ -33,13 +33,10 @@
  ************************************************************************/
 
 /*
-** SAMPLE App command codes
+** Sample App command codes
 */
 #define SAMPLE_APP_NOOP_CC           0
 #define SAMPLE_APP_RESET_COUNTERS_CC 1
 #define SAMPLE_APP_PROCESS_CC        2
-
-
-
 
 #endif
