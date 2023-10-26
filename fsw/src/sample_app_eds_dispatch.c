@@ -41,14 +41,14 @@ static const SAMPLE_APP_Application_Component_Telecommand_DispatchTable_t SAMPLE
 {
         .CMD =
         {
-                .NoopCmd_indication = SAMPLE_APP_Noop,
-                .ResetCountersCmd_indication = SAMPLE_APP_ResetCounters,
-                .ProcessCmd_indication = SAMPLE_APP_Process,
-                .DoExampleCmd_indication = SAMPLE_APP_DoExample
+                .NoopCmd_indication = SAMPLE_APP_NoopCmd,
+                .ResetCountersCmd_indication = SAMPLE_APP_ResetCountersCmd,
+                .ProcessCmd_indication = SAMPLE_APP_ProcessCmd,
+                .DoExampleCmd_indication = SAMPLE_APP_DoExampleCmd
         },
         .SEND_HK =
         {
-                .indication = SAMPLE_APP_ReportHousekeeping
+                .indication = SAMPLE_APP_SendHkCmd
         }
 };
 

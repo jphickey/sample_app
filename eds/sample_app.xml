@@ -46,6 +46,9 @@
         </EntryList>
       </ContainerDataType>
 
+      <ContainerDataType name="SendHkCmd" baseType="CFE_HDR/CommandHeader">
+      </ContainerDataType>
+
       <ContainerDataType name="CommandBase" baseType="CFE_HDR/CommandHeader">
       </ContainerDataType>
 
@@ -84,7 +87,7 @@
 
       <!-- Note the type name here must be "SampleAppTable" to match the C table definition file,
            but the source code uses the type "SampleAppTable" -->
-      <ContainerDataType name="SampleAppTable" shortDescription="Example Table structure">
+      <ContainerDataType name="Table" shortDescription="Example Table structure">
         <EntryList>
           <Entry name="Int1" type="BASE_TYPES/uint16" />
           <Entry name="Int2" type="BASE_TYPES/uint16" />
@@ -104,7 +107,7 @@
           <Interface name="SEND_HK" shortDescription="Send telemetry command interface" type="CFE_SB/Telecommand">
             <!-- This uses a bare spacepacket with no payload -->
             <GenericTypeMapSet>
-              <GenericTypeMap name="TelecommandDataType" type="CFE_HDR/CommandHeader" />
+              <GenericTypeMap name="TelecommandDataType" type="SendHkCmd" />
             </GenericTypeMapSet>
           </Interface>
           <Interface name="HK_TLM" shortDescription="Software bus housekeeping telemetry interface" type="CFE_SB/Telemetry">

@@ -31,7 +31,7 @@
 #ifndef SAMPLE_APP_MSG_H
 #define SAMPLE_APP_MSG_H
 
-#include "sample_app_interface_cfg.h"
+#include "sample_app_mission_cfg.h"
 #include "sample_app_msgdefs.h"
 #include "sample_app_msgstruct.h"
 

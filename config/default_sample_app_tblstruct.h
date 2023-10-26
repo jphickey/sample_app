@@ -38,9 +38,6 @@
  * Macro Definitions
  ************************************************************************/
 
-/* Define filenames of default data images for tables */
-#define SAMPLE_APP_TABLE_FILE "/cf/sample_app_tbl.tbl"
-
 /*************************************************************************
  * Type Definitions
  *************************************************************************/

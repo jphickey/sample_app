@@ -11,7 +11,7 @@
 # The list of header files that control the SAMPLE_APP configuration
 set(SAMPLE_APP_MISSION_CONFIG_FILE_LIST
   sample_app_fcncodes.h
-  sample_app_interface_cfg.h
+  #sample_app_interface_cfg.h
   sample_app_mission_cfg.h
   sample_app_perfids.h
   sample_app_msg.h

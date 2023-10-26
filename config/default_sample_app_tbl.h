@@ -30,4 +30,7 @@
 #include "sample_app_tbldefs.h"
 #include "sample_app_tblstruct.h"
 
+/* Define filenames of default data images for tables */
+#define SAMPLE_APP_TABLE_FILE "/cf/sample_app_tbl.tbl"
+
 #endif
