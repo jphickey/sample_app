@@ -479,9 +479,9 @@ void Test_SAMPLE_APP_ProcessCC(void)
      * Test Case For:
      * void  SAMPLE_APP_ProcessCC( const SAMPLE_APP_Process_t *Msg )
      */
-    SAMPLE_APP_ProcessCmd_t TestMsg;
-    SAMPLE_APP_Table_t      TestTblData;
-    void *                  TblPtr = &TestTblData;
+    SAMPLE_APP_ProcessCmd_t   TestMsg;
+    SAMPLE_APP_ExampleTable_t TestTblData;
+    void *                    TblPtr = &TestTblData;
 
     memset(&TestTblData, 0, sizeof(TestTblData));
     memset(&TestMsg, 0, sizeof(TestMsg));
@@ -578,7 +578,7 @@ void Test_SAMPLE_APP_TblValidationFunc(void)
      * Test Case For:
      * int32 SAMPLE_APP_TblValidationFunc( void *TblData )
      */
-    SAMPLE_APP_Table_t TestTblData;
+    SAMPLE_APP_ExampleTable_t TestTblData;
 
     memset(&TestTblData, 0, sizeof(TestTblData));
 

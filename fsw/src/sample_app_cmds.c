@@ -77,7 +77,7 @@ int32 SAMPLE_APP_Process(const SAMPLE_APP_ProcessCmd_t *Msg)
 {
     int32               status;
     SAMPLE_APP_Table_t *TblPtr;
-    const char *        TableName = "SAMPLE_APP.SampleAppTable";
+    const char *        TableName = "SAMPLE_APP.ExampleTable";
 
     /* Sample Use of Table */
 

@@ -180,7 +180,7 @@ int32 SAMPLE_APP_Init(void)
         /*
         ** Register Table(s)
         */
-        status = CFE_TBL_Register(&SAMPLE_APP_Data.TblHandles[0], "SampleAppTable", sizeof(SAMPLE_APP_Table_t),
+        status = CFE_TBL_Register(&SAMPLE_APP_Data.TblHandles[0], "ExampleTable", sizeof(SAMPLE_APP_Table_t),
                                   CFE_TBL_OPT_DEFAULT, SAMPLE_APP_TblValidationFunc);
         if (status != CFE_SUCCESS)
         {
