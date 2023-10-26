@@ -177,13 +177,13 @@ int32 SAMPLE_APP_Init(void)
     if (status == CFE_SUCCESS)
     {
         /*
-        ** Register Table(s)
+        ** Register ExampleTable(s)
         */
-        status = CFE_TBL_Register(&SAMPLE_APP_Data.TblHandles[0], "SampleAppTable", sizeof(SAMPLE_APP_Table_t),
+        status = CFE_TBL_Register(&SAMPLE_APP_Data.TblHandles[0], "ExampleTable", sizeof(SAMPLE_APP_ExampleTable_t),
                                   CFE_TBL_OPT_DEFAULT, SAMPLE_APP_TblValidationFunc);
         if (status != CFE_SUCCESS)
         {
-            CFE_ES_WriteToSysLog("Sample App: Error Registering Table, RC = 0x%08lX\n", (unsigned long)status);
+            CFE_ES_WriteToSysLog("Sample App: Error Registering ExampleTable, RC = 0x%08lX\n", (unsigned long)status);
         }
         else
         {

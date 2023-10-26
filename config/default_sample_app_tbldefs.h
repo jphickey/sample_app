@@ -34,12 +34,12 @@
 #include "sample_app_mission_cfg.h"
 
 /*
-** Table structure
+** ExampleTable structure
 */
 typedef struct
 {
     uint16 Int1;
     uint16 Int2;
-} SAMPLE_APP_Table_t;
+} SAMPLE_APP_ExampleTable_t;
 
 #endif

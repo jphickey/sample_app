@@ -50,7 +50,7 @@ void Test_SAMPLE_APP_TblValidationFunc(void)
      * Test Case For:
      * int32 SAMPLE_APP_TblValidationFunc( void *TblData )
      */
-    SAMPLE_APP_Table_t TestTblData;
+    SAMPLE_APP_ExampleTable_t TestTblData;
 
     memset(&TestTblData, 0, sizeof(TestTblData));
 
@@ -66,7 +66,7 @@ void Test_SAMPLE_APP_GetCrc(void)
 {
     /*
      * Test Case For:
-     * void SAMPLE_APP_GetCrc( const char *TableName )
+     * void SAMPLE_APP_GetCrc( const char *ExampleTableName )
      */
 
     /*

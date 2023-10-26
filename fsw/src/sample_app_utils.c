@@ -37,7 +37,7 @@
 int32 SAMPLE_APP_TblValidationFunc(void *TblData)
 {
     int32               ReturnCode = CFE_SUCCESS;
-    SAMPLE_APP_Table_t *TblDataPtr = (SAMPLE_APP_Table_t *)TblData;
+    SAMPLE_APP_ExampleTable_t *TblDataPtr = (SAMPLE_APP_ExampleTable_t *)TblData;
 
     /*
     ** Sample Table Validation

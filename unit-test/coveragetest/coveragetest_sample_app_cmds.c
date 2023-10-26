@@ -130,7 +130,7 @@ void Test_SAMPLE_APP_ProcessCmd(void)
      * void  SAMPLE_APP_ProcessCmd( const SAMPLE_APP_ProcessCmd_t *Msg )
      */
     SAMPLE_APP_ProcessCmd_t TestMsg;
-    SAMPLE_APP_Table_t      TestTblData;
+    SAMPLE_APP_ExampleTable_t      TestTblData;
     void *                  TblPtr = &TestTblData;
 
     memset(&TestTblData, 0, sizeof(TestTblData));

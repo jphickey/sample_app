@@ -113,10 +113,10 @@ CFE_Status_t SAMPLE_APP_ProcessCmd(const SAMPLE_APP_ProcessCmd_t *Msg)
 {
     int32               status;
     void *              TblAddr;
-    SAMPLE_APP_Table_t *TblPtr;
-    const char *        TableName = "SAMPLE_APP.SampleAppTable";
+    SAMPLE_APP_ExampleTable_t *TblPtr;
+    const char *        ExampleTableName = "SAMPLE_APP.ExampleTable";
 
-    /* Sample Use of Table */
+    /* Sample Use of ExampleTable */
 
     status = CFE_TBL_GetAddress(&TblAddr, SAMPLE_APP_Data.TblHandles[0]);
 
@@ -127,9 +127,9 @@ CFE_Status_t SAMPLE_APP_ProcessCmd(const SAMPLE_APP_ProcessCmd_t *Msg)
     }
 
     TblPtr = TblAddr;
-    CFE_ES_WriteToSysLog("Sample App: Table Value 1: %d  Value 2: %d", TblPtr->Int1, TblPtr->Int2);
+    CFE_ES_WriteToSysLog("Sample App: ExampleTable Value 1: %d  Value 2: %d", TblPtr->Int1, TblPtr->Int2);
 
-    SAMPLE_APP_GetCrc(TableName);
+    SAMPLE_APP_GetCrc(ExampleTableName);
 
     status = CFE_TBL_ReleaseAddress(SAMPLE_APP_Data.TblHandles[0]);
     if (status != CFE_SUCCESS)
