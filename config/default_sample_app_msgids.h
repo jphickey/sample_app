@@ -18,20 +18,15 @@
 
 /**
  * @file
- *
- * Define sample app table
+ *   SAMPLE_APP Application Message IDs
  */
+#ifndef SAMPLE_APP_MSGIDS_H
+#define SAMPLE_APP_MSGIDS_H
 
-#ifndef SAMPLE_APP_TABLE_H
-#define SAMPLE_APP_TABLE_H
+/* V1 Command Message IDs must be 0x18xx */
+#define SAMPLE_APP_CMD_MID     0x1882
+#define SAMPLE_APP_SEND_HK_MID 0x1883
+/* V1 Telemetry Message IDs must be 0x08xx */
+#define SAMPLE_APP_HK_TLM_MID 0x0883
 
-/*
-** Table structure
-*/
-typedef struct
-{
-    uint16 Int1;
-    uint16 Int2;
-} SAMPLE_APP_Table_t;
-
-#endif /* SAMPLE_APP_TABLE_H */
+#endif

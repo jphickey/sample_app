@@ -18,13 +18,29 @@
 
 /**
  * @file
+ *   Specification for the SAMPLE_APP table related
+ *   constant definitions.
  *
- * Define Sample App Performance IDs
+ * @note
+ *   These Macro definitions have been put in this file (instead of
+ *   sample_app_tbl.h). DO NOT PUT ANY TYPEDEFS OR
+ *   STRUCTURE DEFINITIONS IN THIS FILE!
+ *   ADD THEM TO sample_app_tbl.h IF NEEDED!
  */
+#ifndef SAMPLE_APP_TBLDEFS_H
+#define SAMPLE_APP_TBLDEFS_H
 
-#ifndef SAMPLE_APP_PERFIDS_H
-#define SAMPLE_APP_PERFIDS_H
+#include "common_types.h"
+#include "sample_app_mission_cfg.h"
 
-#define SAMPLE_APP_PERF_ID 91
+/*
+** Table structure
+*/
+typedef struct
+{
+    uint16 Int1;
+    uint16 Int2;
+} SAMPLE_APP_Table_t;
 
-#endif /* SAMPLE_APP_PERFIDS_H */
+
+#endif

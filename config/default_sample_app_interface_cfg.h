@@ -18,19 +18,19 @@
 
 /**
  * @file
+ *   SAMPLE_APP Application Public Definitions
  *
- * Define Sample App Message IDs
+ * This provides default values for configurable items that affect
+ * the interface(s) of this module.  This includes the CMD/TLM message
+ * interface, tables definitions, and any other data products that
+ * serve to exchange information with other entities.
  *
- * \note The Sample App assumes default configuration which uses V1 of message id implementation
+ * @note This file may be overridden/superceded by mission-provided defintions
+ * either by overriding this header or by generating definitions from a command/data
+ * dictionary tool.
  */
+#ifndef SAMPLE_APP_INTERFACE_CFG_H
+#define SAMPLE_APP_INTERFACE_CFG_H
 
-#ifndef SAMPLE_APP_MSGIDS_H
-#define SAMPLE_APP_MSGIDS_H
 
-/* V1 Command Message IDs must be 0x18xx */
-#define SAMPLE_APP_CMD_MID     0x1882
-#define SAMPLE_APP_SEND_HK_MID 0x1883
-/* V1 Telemetry Message IDs must be 0x08xx */
-#define SAMPLE_APP_HK_TLM_MID 0x0883
-
-#endif /* SAMPLE_APP_MSGIDS_H */
+#endif

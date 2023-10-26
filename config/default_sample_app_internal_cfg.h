@@ -18,33 +18,28 @@
 
 /**
  * @file
+ *   SAMPLE_APP Application Private Config Definitions
  *
+ * This provides default values for configurable items that are internal
+ * to this module and do NOT affect the interface(s) of this module.  Changes
+ * to items in this file only affect the local module and will be transparent
+ * to external entities that are using the public interface(s).
  *
- * Purpose:
- * Extra scaffolding functions for the sample_app unit test
- *
- * Notes:
- * This is an extra UT-specific extern declaration
- * to obtain access to an internal data structure
- *
- * UT often needs to modify internal data structures in ways that
- * actual applications never would (bypassing the normal API) in
- * order to exercise or set up for off-nominal cases.
+ * @note This file may be overridden/superceded by mission-provided defintions
+ * either by overriding this header or by generating definitions from a command/data
+ * dictionary tool.
  */
+#ifndef SAMPLE_APP_INTERNAL_CFG_H
+#define SAMPLE_APP_INTERNAL_CFG_H
 
-#ifndef UT_SAMPLE_APP_H
-#define UT_SAMPLE_APP_H
+/***********************************************************************/
+#define SAMPLE_APP_PIPE_DEPTH 32 /* Depth of the Command Pipe for Application */
 
-/*
- * Necessary to include these here to get the definition of the
- * "SAMPLE_APP_Data_t" typedef.
- */
-#include "sample_app_eventids.h"
-#include "sample_app.h"
+#define SAMPLE_APP_NUMBER_OF_TABLES 1 /* Number of Table(s) */
 
-/*
- * Allow UT access to the global "SAMPLE_APP_Data" object.
- */
-extern SAMPLE_APP_Data_t SAMPLE_APP_Data;
+#define SAMPLE_APP_TABLE_OUT_OF_RANGE_ERR_CODE -1
 
-#endif /* UT_SAMPLE_APP_H */
+#define SAMPLE_APP_TBL_ELEMENT_1_MAX 10
+
+
+#endif
