@@ -67,6 +67,11 @@ typedef struct
 
 typedef struct
 {
+    CFE_MSG_CommandHeader_t CommandHeader; /**< \brief Command header */
+} SAMPLE_APP_SendHkCmd_t;
+
+typedef struct
+{
     CFE_MSG_TelemetryHeader_t  TelemetryHeader; /**< \brief Telemetry header */
     SAMPLE_APP_HkTlm_Payload_t Payload;         /**< \brief Telemetry payload */
 } SAMPLE_APP_HkTlm_t;

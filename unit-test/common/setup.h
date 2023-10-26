@@ -16,23 +16,30 @@
  * limitations under the License.
  ************************************************************************/
 
-/**
- * @file
- *   This file contains the prototypes for the Sample App Ground Command-handling functions
- */
-
-#ifndef SAMPLE_APP_CMDS_H
-#define SAMPLE_APP_CMDS_H
-
 /*
-** Required header files.
+** Purpose:
+** Coverage Unit Test cases for the SAMPLE Application
+**
+** Notes:
+** This implements various test cases to exercise all code
+** paths through all functions defined in the SAMPLE application.
+**
+** It is primarily focused at providing examples of the various
+** stub configurations, hook functions, and wrapper calls that
+** are often needed when coercing certain code paths through
+** complex functions.
 */
-#include "cfe_error.h"
-#include "sample_app_msg.h"
 
-CFE_Status_t SAMPLE_APP_SendHkCmd(const SAMPLE_APP_SendHkCmd_t *Msg);
-CFE_Status_t SAMPLE_APP_ResetCountersCmd(const SAMPLE_APP_ResetCountersCmd_t *Msg);
-CFE_Status_t SAMPLE_APP_ProcessCmd(const SAMPLE_APP_ProcessCmd_t *Msg);
-CFE_Status_t SAMPLE_APP_NoopCmd(const SAMPLE_APP_NoopCmd_t *Msg);
+#ifndef SETUP_H
+#define SETUP_H
 
-#endif /* SAMPLE_APP_CMDS_H */
+#include "common_types.h"
+
+#include "utassert.h"
+#include "uttest.h"
+#include "utstubs.h"
+
+void Sample_UT_Setup(void);
+void Sample_UT_TearDown(void);
+
+#endif
