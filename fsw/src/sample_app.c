@@ -177,7 +177,7 @@ int32 SAMPLE_APP_Init(void)
     if (status == CFE_SUCCESS)
     {
         /*
-        ** Register ExampleTable(s)
+        ** Register Example Table(s)
         */
         status = CFE_TBL_Register(&SAMPLE_APP_Data.TblHandles[0], "ExampleTable", sizeof(SAMPLE_APP_ExampleTable_t),
                                   CFE_TBL_OPT_DEFAULT, SAMPLE_APP_TblValidationFunc);
@@ -190,7 +190,7 @@ int32 SAMPLE_APP_Init(void)
             status = CFE_TBL_Load(SAMPLE_APP_Data.TblHandles[0], CFE_TBL_SRC_FILE, SAMPLE_APP_TABLE_FILE);
         }
 
-        CFE_EVS_SendEvent(SAMPLE_APP_STARTUP_INF_EID, CFE_EVS_EventType_INFORMATION, "Sample App Initialized.%s",
+        CFE_EVS_SendEvent(SAMPLE_APP_INIT_INF_EID, CFE_EVS_EventType_INFORMATION, "Sample App Initialized.%s",
                           SAMPLE_APP_VERSION_STRING);
     }
 

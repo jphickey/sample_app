@@ -66,7 +66,7 @@ void Test_SAMPLE_APP_GetCrc(void)
 {
     /*
      * Test Case For:
-     * void SAMPLE_APP_GetCrc( const char *ExampleTableName )
+     * void SAMPLE_APP_GetCrc( const char *TableName )
      */
 
     /*

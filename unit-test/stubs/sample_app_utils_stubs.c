@@ -30,9 +30,9 @@
  * Generated stub function for SAMPLE_APP_GetCrc()
  * ----------------------------------------------------
  */
-void SAMPLE_APP_GetCrc(const char *ExampleTableName)
+void SAMPLE_APP_GetCrc(const char *TableName)
 {
-    UT_GenStub_AddParam(SAMPLE_APP_GetCrc, const char *, ExampleTableName);
+    UT_GenStub_AddParam(SAMPLE_APP_GetCrc, const char *, TableName);
 
     UT_GenStub_Execute(SAMPLE_APP_GetCrc, Basic, NULL);
 }

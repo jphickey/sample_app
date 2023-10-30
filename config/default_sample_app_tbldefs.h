@@ -34,7 +34,7 @@
 #include "sample_app_mission_cfg.h"
 
 /*
-** ExampleTable structure
+** Example Table structure
 */
 typedef struct
 {
