@@ -29,12 +29,12 @@
 #include "common_types.h"
 #include "sample_app_fcncodes.h"
 
-typedef struct SAMPLE_APP_DisplayValue_Payload
+typedef struct SAMPLE_APP_DisplayParam_Payload
 {
     uint32 ValU32;                            /**< 32 bit unsigned integer value */
     int16  ValI16;                            /**< 16 bit signed integer value */
     char   ValStr[SAMPLE_APP_STRING_VAL_LEN]; /**< An example string */
-} SAMPLE_APP_DisplayValue_Payload_t;
+} SAMPLE_APP_DisplayParam_Payload_t;
 
 /*************************************************************************/
 /*
