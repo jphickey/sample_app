@@ -27,18 +27,18 @@
 
 /*
  * ----------------------------------------------------
- * Generated stub function for SAMPLE_APP_DoExampleCmd()
+ * Generated stub function for SAMPLE_APP_DisplayParamCmd()
  * ----------------------------------------------------
  */
-CFE_Status_t SAMPLE_APP_DoExampleCmd(const SAMPLE_APP_DoExampleCmd_t *Msg)
+CFE_Status_t SAMPLE_APP_DisplayParamCmd(const SAMPLE_APP_DisplayParamCmd_t *Msg)
 {
-    UT_GenStub_SetupReturnBuffer(SAMPLE_APP_DoExampleCmd, CFE_Status_t);
+    UT_GenStub_SetupReturnBuffer(SAMPLE_APP_DisplayParamCmd, CFE_Status_t);
 
-    UT_GenStub_AddParam(SAMPLE_APP_DoExampleCmd, const SAMPLE_APP_DoExampleCmd_t *, Msg);
+    UT_GenStub_AddParam(SAMPLE_APP_DisplayParamCmd, const SAMPLE_APP_DisplayParamCmd_t *, Msg);
 
-    UT_GenStub_Execute(SAMPLE_APP_DoExampleCmd, Basic, NULL);
+    UT_GenStub_Execute(SAMPLE_APP_DisplayParamCmd, Basic, NULL);
 
-    return UT_GenStub_GetReturnValue(SAMPLE_APP_DoExampleCmd, CFE_Status_t);
+    return UT_GenStub_GetReturnValue(SAMPLE_APP_DisplayParamCmd, CFE_Status_t);
 }
 
 /*

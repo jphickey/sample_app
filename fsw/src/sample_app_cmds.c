@@ -149,9 +149,11 @@ CFE_Status_t SAMPLE_APP_ProcessCmd(const SAMPLE_APP_ProcessCmd_t *Msg)
 /* A simple example command that displays a passed-in value                   */
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-CFE_Status_t SAMPLE_APP_DoExampleCmd(const SAMPLE_APP_DoExampleCmd_t *Msg)
+CFE_Status_t SAMPLE_APP_DisplayParamCmd(const SAMPLE_APP_DisplayParamCmd_t *Msg)
 {
-    CFE_ES_WriteToSysLog("%s: Command Value=%u", __func__, (unsigned int)Msg->Payload.Value);
+    CFE_EVS_SendEvent(SAMPLE_APP_VALUE_INF_EID, CFE_EVS_EventType_INFORMATION,
+                      "SAMPLE_APP: ValU32=%lu, ValI16=%d, ValStr=%s", (unsigned long)Msg->Payload.ValU32,
+                      (int)Msg->Payload.ValI16, Msg->Payload.ValStr);
 
     return CFE_SUCCESS;
 }
