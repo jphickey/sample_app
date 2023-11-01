@@ -32,6 +32,8 @@
 #include "sample_app_tbl.h"
 #include "sample_app_version.h"
 
+#include "scriptengine.h"
+
 /*
 ** global data
 */

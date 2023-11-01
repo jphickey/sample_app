@@ -8,22 +8,40 @@ assert(inintf)
 outintf = EdsDB.GetInterface("CFE_ES/Application/CMD")
 assert(outintf)
 
-function TestMessageHandler(inmsg)
-    print "This is TestMessageHandler()"
+handlercount = 0
 
-    if (inmsg) then
-        print ("Input Message: " .. tostring(inmsg))
+function TestMessageSender(cmdtype)
+    local outmsg = EdsDB.NewMessage(outintf, cmdtype)
 
-        -- Using the "call" syntax returns the actual value
-        print ("The Input value is: " .. inmsg.Value())
-    end
+    print(string.format("Sending %s, content=%s", cmdtype, tostring(outmsg)))
+    CFE.SendMsg(outmsg)
+end
 
-    intlm = CFE.WaitFor(inintf, mypipe, 5000)
+function TestMessageReply(inmsg)
+    local intlm = CFE.WaitFor(inintf, mypipe, 5000)
+
+    print ("Waiting for input on: " .. tostring(inintf))
     if (intlm) then
         print ("Got a TLM: " .. tostring(intlm))
         print ("CommandCounter: " .. tostring(intlm.Payload.CommandCounter()))
     end
 
-    outmsg = EdsDB.NewMessage(outintf, "NoopCMD")
-    CFE.SendMsg(outmsg)
+    TestMessageSender("NoopCmd")
 end
+
+function TestMessageHandler(inmsg)
+
+    handlercount = 1 + handlercount
+    print ("This is TestMessageHandler() count=" .. tostring(handlercount))
+
+    if (inmsg) then
+        print ("Input Message: " .. tostring(inmsg))
+
+        -- Using the "call" syntax returns the actual value
+        print (string.format("In LUA script, params are: ValU32=%u, ValI16=%d, ValStr=%s\n",
+            inmsg.ValU32(), inmsg.ValI16(), inmsg.ValStr()))
+    end
+end
+
+
+TestMessageSender("NoopCmd")

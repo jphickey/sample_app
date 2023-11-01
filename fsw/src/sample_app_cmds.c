@@ -33,6 +33,10 @@
 #include "sample_app_utils.h"
 #include "sample_app_msg.h"
 
+#include "cfe_mission_eds_parameters.h"
+#include "sample_app_eds_dictionary.h"
+#include "scriptengine.h"
+
 /* The sample_lib module provides the SAMPLE_Function() prototype */
 #include "sample_lib.h"
 
