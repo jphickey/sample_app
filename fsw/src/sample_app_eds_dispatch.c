@@ -41,7 +41,7 @@ static const SAMPLE_APP_Application_Component_Telecommand_DispatchTable_t SAMPLE
     .CMD     = {.NoopCmd_indication          = SAMPLE_APP_NoopCmd,
             .ResetCountersCmd_indication = SAMPLE_APP_ResetCountersCmd,
             .ProcessCmd_indication       = SAMPLE_APP_ProcessCmd,
-            .DoExampleCmd_indication     = SAMPLE_APP_DoExampleCmd},
+            .DisplayParamCmd_indication  = SAMPLE_APP_DisplayParamCmd},
     .SEND_HK = {.indication = SAMPLE_APP_SendHkCmd}};
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
@@ -70,18 +70,18 @@ void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t *SBBufPtr)
 
         if (Status == CFE_STATUS_UNKNOWN_MSG_ID)
         {
-            CFE_EVS_SendEvent(SAMPLE_APP_INVALID_MSGID_ERR_EID, CFE_EVS_EventType_ERROR,
+            CFE_EVS_SendEvent(SAMPLE_APP_MID_ERR_EID, CFE_EVS_EventType_ERROR,
                               "SAMPLE: invalid command packet,MID = 0x%x", (unsigned int)CFE_SB_MsgIdToValue(MsgId));
         }
         else if (Status == CFE_STATUS_WRONG_MSG_LENGTH)
         {
-            CFE_EVS_SendEvent(SAMPLE_APP_LEN_ERR_EID, CFE_EVS_EventType_ERROR,
+            CFE_EVS_SendEvent(SAMPLE_APP_CMD_LEN_ERR_EID, CFE_EVS_EventType_ERROR,
                               "Invalid Msg length: ID = 0x%X,  CC = %u, Len = %u",
                               (unsigned int)CFE_SB_MsgIdToValue(MsgId), (unsigned int)MsgFc, (unsigned int)MsgSize);
         }
         else
         {
-            CFE_EVS_SendEvent(SAMPLE_APP_COMMAND_ERR_EID, CFE_EVS_EventType_ERROR,
+            CFE_EVS_SendEvent(SAMPLE_APP_CC_ERR_EID, CFE_EVS_EventType_ERROR,
                               "SAMPLE: Invalid ground command code: CC = %d", (int)MsgFc);
         }
     }
