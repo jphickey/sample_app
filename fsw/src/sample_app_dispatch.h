@@ -19,36 +19,20 @@
 /**
  * @file
  *
- * Common definitions for all sample_app coverage tests
+ * Main header file for the SAMPLE application
  */
 
-#ifndef SAMPLE_APP_COVERAGETEST_COMMON_H
-#define SAMPLE_APP_COVERAGETEST_COMMON_H
+#ifndef SAMPLE_APP_DISPATCH_H
+#define SAMPLE_APP_DISPATCH_H
 
 /*
- * Includes
- */
-
-#include "utassert.h"
-#include "uttest.h"
-#include "utstubs.h"
-
-#include "setup.h"
-#include "eventcheck.h"
-
+** Required header files.
+*/
 #include "cfe.h"
-#include "sample_app_eventids.h"
-#include "sample_app.h"
-#include "sample_app_dispatch.h"
-#include "sample_app_cmds.h"
-#include "sample_app_utils.h"
-#include "sample_app_msgids.h"
 #include "sample_app_msg.h"
-#include "sample_app_tbl.h"
 
-/*
- * Macro to add a test case to the list of tests to execute
- */
-#define ADD_TEST(test) UtTest_Add((Test_##test), Sample_UT_Setup, Sample_UT_TearDown, #test)
+void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t *SBBufPtr);
+void SAMPLE_APP_ProcessGroundCommand(const CFE_SB_Buffer_t *SBBufPtr);
+bool SAMPLE_APP_VerifyCmdLength(const CFE_MSG_Message_t *MsgPtr, size_t ExpectedLength);
 
-#endif /* SAMPLE_APP_COVERAGETEST_COMMON_H */
+#endif /* SAMPLE_APP_DISPATCH_H */

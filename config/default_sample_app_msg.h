@@ -18,21 +18,21 @@
 
 /**
  * @file
+ *   Specification for the SAMPLE_APP command and telemetry
+ *   message data types.
  *
- * Define SAMPLE App  Messages and info
+ * This is a compatibility header for the "sample_app_msg.h" file that has
+ * traditionally provided the message definitions for cFS apps.
+ *
+ * @note This file may be overridden/superceded by mission-provided defintions
+ * either by overriding this header or by generating definitions from a command/data
+ * dictionary tool.
  */
-
 #ifndef SAMPLE_APP_MSG_H
 #define SAMPLE_APP_MSG_H
 
-/*
- * EDS-defined function codes (*_CC)
- */
-#include "sample_app_eds_cc.h"
+#include "sample_app_mission_cfg.h"
+#include "sample_app_msgdefs.h"
+#include "sample_app_msgstruct.h"
 
-/*
- * EDS-defined message data types
- */
-#include "sample_app_eds_typedefs.h"
-
-#endif /* SAMPLE_APP_MSG_H */
+#endif

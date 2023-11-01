@@ -20,11 +20,11 @@
 ** File: coveragetest_sample_app.c
 **
 ** Purpose:
-** Coverage Unit Test cases for the SAMPLE Application
+** Coverage Unit Test cases for the Sample Application
 **
 ** Notes:
 ** This implements various test cases to exercise all code
-** paths through all functions defined in the SAMPLE application.
+** paths through all functions defined in the Sample application.
 **
 ** It is primarily focused at providing examples of the various
 ** stub configurations, hook functions, and wrapper calls that
@@ -35,107 +35,8 @@
 /*
  * Includes
  */
-
 #include "sample_lib.h" /* For SAMPLE_LIB_Function */
 #include "sample_app_coveragetest_common.h"
-#include "ut_sample_app.h"
-
-/*
- * Unit test check event hook information
- */
-typedef struct
-{
-    uint16      ExpectedEvent;
-    uint32      MatchCount;
-    const char *ExpectedFormat;
-} UT_CheckEvent_t;
-
-/*
- * An example hook function to check for a specific event.
- */
-static int32 UT_CheckEvent_Hook(void *UserObj, int32 StubRetcode, uint32 CallCount, const UT_StubContext_t *Context,
-                                va_list va)
-{
-    UT_CheckEvent_t *State = UserObj;
-    uint16           EventId;
-    const char *     Spec;
-
-    /*
-     * The CFE_EVS_SendEvent stub passes the EventID as the
-     * first context argument.
-     */
-    if (Context->ArgCount > 0)
-    {
-        EventId = UT_Hook_GetArgValueByName(Context, "EventID", uint16);
-        if (EventId == State->ExpectedEvent)
-        {
-            if (State->ExpectedFormat != NULL)
-            {
-                Spec = UT_Hook_GetArgValueByName(Context, "Spec", const char *);
-                if (Spec != NULL)
-                {
-                    /*
-                     * Example of how to validate the full argument set.
-                     * ------------------------------------------------
-                     *
-                     * If really desired one can call something like:
-                     *
-                     * char TestText[CFE_MISSION_EVS_MAX_MESSAGE_LENGTH];
-                     * vsnprintf(TestText, sizeof(TestText), Spec, va);
-                     *
-                     * And then compare the output (TestText) to the expected fully-rendered string.
-                     *
-                     * NOTE: While this can be done, use with discretion - This isn't really
-                     * verifying that the FSW code unit generated the correct event text,
-                     * rather it is validating what the system snprintf() library function
-                     * produces when passed the format string and args.
-                     *
-                     * This type of check has been demonstrated to make tests very fragile,
-                     * because it is influenced by many factors outside the control of the
-                     * test case.
-                     *
-                     * __This derived string is not an actual output of the unit under test__
-                     */
-                    if (strcmp(Spec, State->ExpectedFormat) == 0)
-                    {
-                        ++State->MatchCount;
-                    }
-                }
-            }
-            else
-            {
-                ++State->MatchCount;
-            }
-        }
-    }
-
-    return 0;
-}
-
-/* Macro to get expected event name */
-#define UT_CHECKEVENT_SETUP(Evt, ExpectedEvent, ExpectedFormat) \
-    UT_CheckEvent_Setup_Impl(Evt, ExpectedEvent, #ExpectedEvent, ExpectedFormat)
-
-/*
- * Helper function to set up for event checking
- * This attaches the hook function to CFE_EVS_SendEvent
- */
-static void UT_CheckEvent_Setup_Impl(UT_CheckEvent_t *Evt, uint16 ExpectedEvent, const char *EventName,
-                                     const char *ExpectedFormat)
-{
-    if (ExpectedFormat == NULL)
-    {
-        UtPrintf("CheckEvent will match: %s(%u)", EventName, ExpectedEvent);
-    }
-    else
-    {
-        UtPrintf("CheckEvent will match: %s(%u), \"%s\"", EventName, ExpectedEvent, ExpectedFormat);
-    }
-    memset(Evt, 0, sizeof(*Evt));
-    Evt->ExpectedEvent  = ExpectedEvent;
-    Evt->ExpectedFormat = ExpectedFormat;
-    UT_SetVaHookFunction(UT_KEY(CFE_EVS_SendEvent), UT_CheckEvent_Hook, Evt);
-}
 
 /*
 **********************************************************************************
@@ -273,175 +174,6 @@ void Test_SAMPLE_APP_Init(void)
     UtAssert_STUB_COUNT(CFE_ES_WriteToSysLog, 5);
 }
 
-void Test_SAMPLE_APP_ReportHousekeeping(void)
-{
-    /*
-     * Test Case For:
-     * void SAMPLE_APP_ReportHousekeeping( const CFE_SB_CmdHdr_t *Msg )
-     */
-    CFE_MSG_Message_t *MsgSend;
-    CFE_MSG_Message_t *MsgTimestamp;
-
-    /* Set up to capture send message address */
-    UT_SetDataBuffer(UT_KEY(CFE_SB_TransmitMsg), &MsgSend, sizeof(MsgSend), false);
-
-    /* Set up to capture timestamp message address */
-    UT_SetDataBuffer(UT_KEY(CFE_SB_TimeStampMsg), &MsgTimestamp, sizeof(MsgTimestamp), false);
-
-    /* Call unit under test, NULL pointer confirms command access is through APIs */
-    SAMPLE_APP_ReportHousekeeping(NULL);
-
-    /* Confirm message sent*/
-    UtAssert_STUB_COUNT(CFE_SB_TransmitMsg, 1);
-    UtAssert_ADDRESS_EQ(MsgSend, &SAMPLE_APP_Data.HkTlm);
-
-    /* Confirm timestamp msg address */
-    UtAssert_STUB_COUNT(CFE_SB_TimeStampMsg, 1);
-    UtAssert_ADDRESS_EQ(MsgTimestamp, &SAMPLE_APP_Data.HkTlm);
-
-    /*
-     * Confirm that the CFE_TBL_Manage() call was done
-     */
-    UtAssert_STUB_COUNT(CFE_TBL_Manage, 1);
-}
-
-void Test_SAMPLE_APP_NoopCmd(void)
-{
-    /*
-     * Test Case For:
-     * void SAMPLE_APP_NoopCmd( const SAMPLE_APP_Noop_t *Msg )
-     */
-    SAMPLE_APP_NoopCmd_t TestMsg;
-    UT_CheckEvent_t      EventTest;
-
-    memset(&TestMsg, 0, sizeof(TestMsg));
-
-    /* test dispatch of NOOP */
-    UT_CHECKEVENT_SETUP(&EventTest, SAMPLE_APP_COMMANDNOP_INF_EID, NULL);
-
-    UtAssert_INT32_EQ(SAMPLE_APP_Noop(&TestMsg), CFE_SUCCESS);
-
-    /*
-     * Confirm that the event was generated
-     */
-    UtAssert_UINT32_EQ(EventTest.MatchCount, 1);
-}
-
-void Test_SAMPLE_APP_ResetCounters(void)
-{
-    /*
-     * Test Case For:
-     * void SAMPLE_APP_ResetCounters( const SAMPLE_APP_ResetCounters_t *Msg )
-     */
-    SAMPLE_APP_ResetCountersCmd_t TestMsg;
-    UT_CheckEvent_t               EventTest;
-
-    memset(&TestMsg, 0, sizeof(TestMsg));
-
-    UT_CHECKEVENT_SETUP(&EventTest, SAMPLE_APP_COMMANDRST_INF_EID, "SAMPLE: RESET command");
-
-    UtAssert_INT32_EQ(SAMPLE_APP_ResetCounters(&TestMsg), CFE_SUCCESS);
-
-    /*
-     * Confirm that the event was generated
-     */
-    UtAssert_UINT32_EQ(EventTest.MatchCount, 1);
-}
-
-void Test_SAMPLE_APP_ProcessCC(void)
-{
-    /*
-     * Test Case For:
-     * void  SAMPLE_APP_ProcessCC( const SAMPLE_APP_Process_t *Msg )
-     */
-    SAMPLE_APP_ProcessCmd_t TestMsg;
-    SAMPLE_APP_Table_t      TestTblData;
-    void *                  TblPtr = &TestTblData;
-
-    memset(&TestTblData, 0, sizeof(TestTblData));
-    memset(&TestMsg, 0, sizeof(TestMsg));
-
-    /* Provide some table data for the SAMPLE_APP_Process() function to use */
-    TestTblData.Int1 = 40;
-    TestTblData.Int2 = 50;
-    UT_SetDataBuffer(UT_KEY(CFE_TBL_GetAddress), &TblPtr, sizeof(TblPtr), false);
-    UtAssert_INT32_EQ(SAMPLE_APP_Process(&TestMsg), CFE_SUCCESS);
-
-    /*
-     * Confirm that the CFE_TBL_GetAddress() call was done
-     */
-    UtAssert_STUB_COUNT(CFE_TBL_GetAddress, 1);
-
-    /*
-     * Confirm that the SAMPLE_LIB_Function() call was done
-     * NOTE: This stub is provided by the sample_lib library
-     */
-    UtAssert_STUB_COUNT(SAMPLE_LIB_Function, 1);
-
-    /*
-     * Configure the CFE_TBL_GetAddress function to return an error
-     * Exercise the error return path
-     */
-    UT_SetDefaultReturnValue(UT_KEY(CFE_TBL_GetAddress), CFE_TBL_ERR_UNREGISTERED);
-    UtAssert_INT32_EQ(SAMPLE_APP_Process(&TestMsg), CFE_TBL_ERR_UNREGISTERED);
-}
-
-void Test_SAMPLE_APP_TblValidationFunc(void)
-{
-    /*
-     * Test Case For:
-     * int32 SAMPLE_APP_TblValidationFunc( void *TblData )
-     */
-    SAMPLE_APP_Table_t TestTblData;
-
-    memset(&TestTblData, 0, sizeof(TestTblData));
-
-    /* nominal case (0) should succeed */
-    UtAssert_INT32_EQ(SAMPLE_APP_TblValidationFunc(&TestTblData), CFE_SUCCESS);
-
-    /* error case should return SAMPLE_APP_TABLE_OUT_OF_RANGE_ERR_CODE */
-    TestTblData.Int1 = 1 + SAMPLE_APP_TBL_ELEMENT_1_MAX;
-    UtAssert_INT32_EQ(SAMPLE_APP_TblValidationFunc(&TestTblData), SAMPLE_APP_TABLE_OUT_OF_RANGE_ERR_CODE);
-}
-
-void Test_SAMPLE_APP_GetCrc(void)
-{
-    /*
-     * Test Case For:
-     * void SAMPLE_APP_GetCrc( const char *TableName )
-     */
-
-    /*
-     * The only branch point here is CFE_TBL_GetInfo()
-     *
-     * Either way this function just does a write to syslog,
-     * and it is the same in both cases, just with
-     * a different message.  This could actually verify
-     * the message using a hook function, if desired.
-     */
-
-    UT_SetDefaultReturnValue(UT_KEY(CFE_TBL_GetInfo), CFE_TBL_ERR_INVALID_NAME);
-    SAMPLE_APP_GetCrc("UT");
-    UtAssert_STUB_COUNT(CFE_ES_WriteToSysLog, 1);
-
-    UT_ClearDefaultReturnValue(UT_KEY(CFE_TBL_GetInfo));
-    SAMPLE_APP_GetCrc("UT");
-    UtAssert_STUB_COUNT(CFE_ES_WriteToSysLog, 2);
-}
-
-/*
- * Setup function prior to every test
- */
-void Sample_UT_Setup(void)
-{
-    UT_ResetState(0);
-}
-
-/*
- * Teardown function after every test
- */
-void Sample_UT_TearDown(void) {}
-
 /*
  * Register the test cases to execute with the unit test tool
  */
@@ -449,10 +181,4 @@ void UtTest_Setup(void)
 {
     ADD_TEST(SAMPLE_APP_Main);
     ADD_TEST(SAMPLE_APP_Init);
-    ADD_TEST(SAMPLE_APP_ReportHousekeeping);
-    ADD_TEST(SAMPLE_APP_NoopCmd);
-    ADD_TEST(SAMPLE_APP_ResetCounters);
-    ADD_TEST(SAMPLE_APP_ProcessCC);
-    ADD_TEST(SAMPLE_APP_TblValidationFunc);
-    ADD_TEST(SAMPLE_APP_GetCrc);
 }

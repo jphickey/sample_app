@@ -18,37 +18,27 @@
 
 /**
  * @file
+ *   SAMPLE_APP Application Public Definitions
  *
- * Common definitions for all sample_app coverage tests
+ * This provides default values for configurable items that affect
+ * the interface(s) of this module.  This includes the CMD/TLM message
+ * interface, tables definitions, and any other data products that
+ * serve to exchange information with other entities.
+ *
+ * @note This file may be overridden/superceded by mission-provided defintions
+ * either by overriding this header or by generating definitions from a command/data
+ * dictionary tool.
  */
+#ifndef SAMPLE_APP_INTERFACE_CFG_H
+#define SAMPLE_APP_INTERFACE_CFG_H
 
-#ifndef SAMPLE_APP_COVERAGETEST_COMMON_H
-#define SAMPLE_APP_COVERAGETEST_COMMON_H
-
-/*
- * Includes
+/**
+ * \brief Length of string buffer in the Display Value command
+ *
+ * The Display Value command offers an example of how to use command
+ * parameters of different types.  This macro controls the length
+ * of the string parameter.
  */
+#define SAMPLE_APP_STRING_VAL_LEN 10
 
-#include "utassert.h"
-#include "uttest.h"
-#include "utstubs.h"
-
-#include "setup.h"
-#include "eventcheck.h"
-
-#include "cfe.h"
-#include "sample_app_eventids.h"
-#include "sample_app.h"
-#include "sample_app_dispatch.h"
-#include "sample_app_cmds.h"
-#include "sample_app_utils.h"
-#include "sample_app_msgids.h"
-#include "sample_app_msg.h"
-#include "sample_app_tbl.h"
-
-/*
- * Macro to add a test case to the list of tests to execute
- */
-#define ADD_TEST(test) UtTest_Add((Test_##test), Sample_UT_Setup, Sample_UT_TearDown, #test)
-
-#endif /* SAMPLE_APP_COVERAGETEST_COMMON_H */
+#endif
