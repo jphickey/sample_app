@@ -33,9 +33,13 @@
 
     <DataTypeSet>
 
+      <StringDataType name="ExampleString" length="${SAMPLE_APP/STRING_VAL_LEN}" />
+
       <ContainerDataType name="DisplayParam_Payload" shortDescription="Example Command with a payload/argument">
         <EntryList>
-          <Entry name="Value" type="BASE_TYPES/uint16" shortDescription="Example command argument" />
+          <Entry name="ValU32" type="BASE_TYPES/uint32" shortDescription="32 bit unsigned integer value" />
+          <Entry name="ValI16" type="BASE_TYPES/int16" shortDescription="16 bit signed integer value" />
+          <Entry name="ValStr" type="ExampleString" shortDescription="An example string" />
         </EntryList>
       </ContainerDataType>
 
