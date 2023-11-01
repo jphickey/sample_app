@@ -183,6 +183,29 @@ void Test_SAMPLE_APP_ProcessCmd(void)
     UtAssert_STUB_COUNT(CFE_ES_WriteToSysLog, 4);
 }
 
+void Test_SAMPLE_APP_DisplayParamCmd(void)
+{
+    /*
+     * Test Case For:
+     * void  SAMPLE_APP_DisplayParamCmd( const SAMPLE_APP_DisplayParamCmd_t *Msg )
+     */
+    SAMPLE_APP_DisplayParamCmd_t TestMsg;
+    UT_CheckEvent_t              EventTest;
+
+    memset(&TestMsg, 0, sizeof(TestMsg));
+
+    UT_CHECKEVENT_SETUP(&EventTest, SAMPLE_APP_VALUE_INF_EID, "SAMPLE_APP: ValU32=%lu, ValI16=%d, ValStr=%s");
+    TestMsg.Payload.ValU32 = 10;
+    TestMsg.Payload.ValI16 = -4;
+    snprintf(TestMsg.Payload.ValStr, sizeof(TestMsg.Payload.ValStr), "Hello");
+
+    UtAssert_INT32_EQ(SAMPLE_APP_DisplayParamCmd(&TestMsg), CFE_SUCCESS);
+    /*
+     * Confirm that the event was generated
+     */
+    UtAssert_UINT32_EQ(EventTest.MatchCount, 1);
+}
+
 /*
  * Register the test cases to execute with the unit test tool
  */
@@ -192,4 +215,5 @@ void UtTest_Setup(void)
     ADD_TEST(SAMPLE_APP_NoopCmd);
     ADD_TEST(SAMPLE_APP_ResetCountersCmd);
     ADD_TEST(SAMPLE_APP_ProcessCmd);
+    ADD_TEST(SAMPLE_APP_DisplayParamCmd);
 }

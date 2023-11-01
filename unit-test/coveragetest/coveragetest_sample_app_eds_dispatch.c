@@ -53,7 +53,6 @@ void Test_SAMPLE_APP_TaskPipe(void)
      */
 }
 
-
 /*
  * Register the test cases to execute with the unit test tool
  */

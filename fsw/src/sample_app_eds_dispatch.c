@@ -37,20 +37,12 @@
 /*
  * Define a lookup table for SAMPLE app command codes
  */
-static const SAMPLE_APP_Application_Component_Telecommand_DispatchTable_t SAMPLE_TC_DISPATCH_TABLE =
-{
-        .CMD =
-        {
-                .NoopCmd_indication = SAMPLE_APP_NoopCmd,
-                .ResetCountersCmd_indication = SAMPLE_APP_ResetCountersCmd,
-                .ProcessCmd_indication = SAMPLE_APP_ProcessCmd,
-                .DoExampleCmd_indication = SAMPLE_APP_DoExampleCmd
-        },
-        .SEND_HK =
-        {
-                .indication = SAMPLE_APP_SendHkCmd
-        }
-};
+static const SAMPLE_APP_Application_Component_Telecommand_DispatchTable_t SAMPLE_TC_DISPATCH_TABLE = {
+    .CMD     = {.NoopCmd_indication          = SAMPLE_APP_NoopCmd,
+            .ResetCountersCmd_indication = SAMPLE_APP_ResetCountersCmd,
+            .ProcessCmd_indication       = SAMPLE_APP_ProcessCmd,
+            .DoExampleCmd_indication     = SAMPLE_APP_DoExampleCmd},
+    .SEND_HK = {.indication = SAMPLE_APP_SendHkCmd}};
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 /*                                                                            */
@@ -61,14 +53,13 @@ static const SAMPLE_APP_Application_Component_Telecommand_DispatchTable_t SAMPLE
 /* * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * *  * *  * * * * */
 void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t *SBBufPtr)
 {
-    CFE_Status_t Status;
-    CFE_SB_MsgId_t MsgId;
-    CFE_MSG_Size_t MsgSize;
+    CFE_Status_t      Status;
+    CFE_SB_MsgId_t    MsgId;
+    CFE_MSG_Size_t    MsgSize;
     CFE_MSG_FcnCode_t MsgFc;
 
-    Status = SAMPLE_APP_Application_Component_Telecommand_Dispatch(
-                    CFE_SB_Telecommand_indication_Command_ID,
-                    SBBufPtr, &SAMPLE_TC_DISPATCH_TABLE);
+    Status = SAMPLE_APP_Application_Component_Telecommand_Dispatch(CFE_SB_Telecommand_indication_Command_ID, SBBufPtr,
+                                                                   &SAMPLE_TC_DISPATCH_TABLE);
 
     if (Status != CFE_SUCCESS)
     {
@@ -85,8 +76,8 @@ void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t *SBBufPtr)
         else if (Status == CFE_STATUS_WRONG_MSG_LENGTH)
         {
             CFE_EVS_SendEvent(SAMPLE_APP_LEN_ERR_EID, CFE_EVS_EventType_ERROR,
-                            "Invalid Msg length: ID = 0x%X,  CC = %u, Len = %u",
-                            (unsigned int)CFE_SB_MsgIdToValue(MsgId), (unsigned int)MsgFc, (unsigned int)MsgSize);
+                              "Invalid Msg length: ID = 0x%X,  CC = %u, Len = %u",
+                              (unsigned int)CFE_SB_MsgIdToValue(MsgId), (unsigned int)MsgFc, (unsigned int)MsgSize);
         }
         else
         {
@@ -94,5 +85,4 @@ void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t *SBBufPtr)
                               "SAMPLE: Invalid ground command code: CC = %d", (int)MsgFc);
         }
     }
-
 }
