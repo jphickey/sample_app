@@ -111,10 +111,10 @@ CFE_Status_t SAMPLE_APP_ResetCountersCmd(const SAMPLE_APP_ResetCountersCmd_t *Ms
 /* * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * *  * *  * * * * */
 CFE_Status_t SAMPLE_APP_ProcessCmd(const SAMPLE_APP_ProcessCmd_t *Msg)
 {
-    int32               status;
-    void *              TblAddr;
+    int32                      status;
+    void *                     TblAddr;
     SAMPLE_APP_ExampleTable_t *TblPtr;
-    const char *        TableName = "SAMPLE_APP.ExampleTable";
+    const char *               TableName = "SAMPLE_APP.ExampleTable";
 
     /* Sample Use of Example Table */
 
@@ -127,7 +127,7 @@ CFE_Status_t SAMPLE_APP_ProcessCmd(const SAMPLE_APP_ProcessCmd_t *Msg)
     }
 
     TblPtr = TblAddr;
-    CFE_ES_WriteToSysLog("Sample App: Table Value 1: %d  Value 2: %d", TblPtr->Int1, TblPtr->Int2);
+    CFE_ES_WriteToSysLog("Sample App: Example Table Value 1: %d  Value 2: %d", TblPtr->Int1, TblPtr->Int2);
 
     SAMPLE_APP_GetCrc(TableName);
 

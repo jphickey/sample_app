@@ -16,7 +16,6 @@ else()
   )
 endif()
 
-
 # Create the app module
 add_cfe_app(sample_app ${APP_SRC_FILES})
 

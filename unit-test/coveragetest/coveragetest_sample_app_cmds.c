@@ -92,7 +92,7 @@ void Test_SAMPLE_APP_NoopCmd(void)
     memset(&TestMsg, 0, sizeof(TestMsg));
 
     /* test dispatch of NOOP */
-    UT_CHECKEVENT_SETUP(&EventTest, SAMPLE_APP_COMMANDNOP_INF_EID, NULL);
+    UT_CHECKEVENT_SETUP(&EventTest, SAMPLE_APP_NOOP_INF_EID, NULL);
 
     UtAssert_INT32_EQ(SAMPLE_APP_NoopCmd(&TestMsg), CFE_SUCCESS);
 
@@ -113,7 +113,7 @@ void Test_SAMPLE_APP_ResetCountersCmd(void)
 
     memset(&TestMsg, 0, sizeof(TestMsg));
 
-    UT_CHECKEVENT_SETUP(&EventTest, SAMPLE_APP_COMMANDRST_INF_EID, "SAMPLE: RESET command");
+    UT_CHECKEVENT_SETUP(&EventTest, SAMPLE_APP_RESET_INF_EID, "SAMPLE: RESET command");
 
     UtAssert_INT32_EQ(SAMPLE_APP_ResetCountersCmd(&TestMsg), CFE_SUCCESS);
 
@@ -129,9 +129,9 @@ void Test_SAMPLE_APP_ProcessCmd(void)
      * Test Case For:
      * void  SAMPLE_APP_ProcessCmd( const SAMPLE_APP_ProcessCmd_t *Msg )
      */
-    SAMPLE_APP_ProcessCmd_t TestMsg;
-    SAMPLE_APP_ExampleTable_t      TestTblData;
-    void *                  TblPtr = &TestTblData;
+    SAMPLE_APP_ProcessCmd_t   TestMsg;
+    SAMPLE_APP_ExampleTable_t TestTblData;
+    void *                    TblPtr = &TestTblData;
 
     memset(&TestTblData, 0, sizeof(TestTblData));
     memset(&TestMsg, 0, sizeof(TestMsg));

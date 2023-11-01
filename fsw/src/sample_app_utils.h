@@ -30,6 +30,6 @@
 #include "sample_app.h"
 
 int32 SAMPLE_APP_TblValidationFunc(void *TblData);
-void  SAMPLE_APP_GetCrc(const char *ExampleTableName);
+void  SAMPLE_APP_GetCrc(const char *TableName);
 
 #endif /* SAMPLE_APP_UTILS_H */

@@ -31,16 +31,16 @@
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /*                                                                 */
-/* Verify contents of First Table buffer contents                  */
+/* Verify contents of First Example Table buffer contents                  */
 /*                                                                 */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 int32 SAMPLE_APP_TblValidationFunc(void *TblData)
 {
-    int32               ReturnCode = CFE_SUCCESS;
+    int32                      ReturnCode = CFE_SUCCESS;
     SAMPLE_APP_ExampleTable_t *TblDataPtr = (SAMPLE_APP_ExampleTable_t *)TblData;
 
     /*
-    ** Sample Table Validation
+    ** Sample Example Table Validation
     */
     if (TblDataPtr->Int1 > SAMPLE_APP_TBL_ELEMENT_1_MAX)
     {
@@ -65,7 +65,7 @@ void SAMPLE_APP_GetCrc(const char *TableName)
     status = CFE_TBL_GetInfo(&TblInfoPtr, TableName);
     if (status != CFE_SUCCESS)
     {
-        CFE_ES_WriteToSysLog("Sample App: Error Getting Table Info");
+        CFE_ES_WriteToSysLog("Sample App: Error Getting Example Table Info");
     }
     else
     {

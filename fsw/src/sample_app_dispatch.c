@@ -53,7 +53,7 @@ bool SAMPLE_APP_VerifyCmdLength(const CFE_MSG_Message_t *MsgPtr, size_t Expected
         CFE_MSG_GetMsgId(MsgPtr, &MsgId);
         CFE_MSG_GetFcnCode(MsgPtr, &FcnCode);
 
-        CFE_EVS_SendEvent(SAMPLE_APP_LEN_ERR_EID, CFE_EVS_EventType_ERROR,
+        CFE_EVS_SendEvent(SAMPLE_APP_CMD_LEN_ERR_EID, CFE_EVS_EventType_ERROR,
                           "Invalid Msg length: ID = 0x%X,  CC = %u, Len = %u, Expected = %u",
                           (unsigned int)CFE_SB_MsgIdToValue(MsgId), (unsigned int)FcnCode, (unsigned int)ActualLength,
                           (unsigned int)ExpectedLength);
@@ -108,8 +108,8 @@ void SAMPLE_APP_ProcessGroundCommand(const CFE_SB_Buffer_t *SBBufPtr)
 
         /* default case already found during FC vs length test */
         default:
-            CFE_EVS_SendEvent(SAMPLE_APP_COMMAND_ERR_EID, CFE_EVS_EventType_ERROR,
-                              "Invalid ground command code: CC = %d", CommandCode);
+            CFE_EVS_SendEvent(SAMPLE_APP_CC_ERR_EID, CFE_EVS_EventType_ERROR, "Invalid ground command code: CC = %d",
+                              CommandCode);
             break;
     }
 }
@@ -138,7 +138,7 @@ void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t *SBBufPtr)
             break;
 
         default:
-            CFE_EVS_SendEvent(SAMPLE_APP_INVALID_MSGID_ERR_EID, CFE_EVS_EventType_ERROR,
+            CFE_EVS_SendEvent(SAMPLE_APP_MID_ERR_EID, CFE_EVS_EventType_ERROR,
                               "SAMPLE: invalid command packet,MID = 0x%x", (unsigned int)CFE_SB_MsgIdToValue(MsgId));
             break;
     }

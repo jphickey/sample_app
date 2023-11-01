@@ -183,7 +183,7 @@ int32 SAMPLE_APP_Init(void)
                                   CFE_TBL_OPT_DEFAULT, SAMPLE_APP_TblValidationFunc);
         if (status != CFE_SUCCESS)
         {
-            CFE_ES_WriteToSysLog("Sample App: Error Registering ExampleTable, RC = 0x%08lX\n", (unsigned long)status);
+            CFE_ES_WriteToSysLog("Sample App: Error Registering Example Table, RC = 0x%08lX\n", (unsigned long)status);
         }
         else
         {

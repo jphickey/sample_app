@@ -63,7 +63,7 @@ void Test_SAMPLE_APP_TaskPipe(void)
     UT_CheckEvent_t   EventTest;
 
     memset(&TestMsg, 0, sizeof(TestMsg));
-    UT_CHECKEVENT_SETUP(&EventTest, SAMPLE_APP_INVALID_MSGID_ERR_EID, "SAMPLE: invalid command packet,MID = 0x%x");
+    UT_CHECKEVENT_SETUP(&EventTest, SAMPLE_APP_MID_ERR_EID, "SAMPLE: invalid command packet,MID = 0x%x");
 
     /*
      * The CFE_MSG_GetMsgId() stub uses a data buffer to hold the
@@ -114,7 +114,7 @@ void Test_SAMPLE_APP_ProcessGroundCommand(void)
 
     memset(&TestMsg, 0, sizeof(TestMsg));
 
-    UT_CHECKEVENT_SETUP(&EventTest, SAMPLE_APP_LEN_ERR_EID,
+    UT_CHECKEVENT_SETUP(&EventTest, SAMPLE_APP_CMD_LEN_ERR_EID,
                         "Invalid Msg length: ID = 0x%X,  CC = %u, Len = %u, Expected = %u");
 
     /*
@@ -198,7 +198,7 @@ void Test_SAMPLE_APP_ProcessGroundCommand(void)
     /* test an invalid CC */
     FcnCode = 1000;
     UT_SetDataBuffer(UT_KEY(CFE_MSG_GetFcnCode), &FcnCode, sizeof(FcnCode), false);
-    UT_CHECKEVENT_SETUP(&EventTest, SAMPLE_APP_COMMAND_ERR_EID, "Invalid ground command code: CC = %d");
+    UT_CHECKEVENT_SETUP(&EventTest, SAMPLE_APP_CC_ERR_EID, "Invalid ground command code: CC = %d");
     SAMPLE_APP_ProcessGroundCommand(&TestMsg.SBBuf);
 
     /*
@@ -222,7 +222,7 @@ void Test_SAMPLE_APP_VerifyCmdLength(void)
      * test a match case
      */
     UT_SetDataBuffer(UT_KEY(CFE_MSG_GetSize), &size, sizeof(size), false);
-    UT_CHECKEVENT_SETUP(&EventTest, SAMPLE_APP_LEN_ERR_EID,
+    UT_CHECKEVENT_SETUP(&EventTest, SAMPLE_APP_CMD_LEN_ERR_EID,
                         "Invalid Msg length: ID = 0x%X,  CC = %u, Len = %u, Expected = %u");
 
     SAMPLE_APP_VerifyCmdLength(NULL, size);
