@@ -33,9 +33,13 @@
 
     <DataTypeSet>
 
-      <ContainerDataType name="DoExample_Payload" shortDescription="Example Command with a payload/argument">
+      <StringDataType name="ExampleString" length="${SAMPLE_APP/STRING_VAL_LEN}" />
+
+      <ContainerDataType name="DisplayParam_Payload" shortDescription="Example Command with a payload/argument">
         <EntryList>
-          <Entry name="Value" type="BASE_TYPES/uint16" shortDescription="Example command argument" />
+          <Entry name="ValU32" type="BASE_TYPES/uint32" shortDescription="32 bit unsigned integer value" />
+          <Entry name="ValI16" type="BASE_TYPES/int16" shortDescription="16 bit signed integer value" />
+          <Entry name="ValStr" type="ExampleString" shortDescription="An example string" />
         </EntryList>
       </ContainerDataType>
 
@@ -44,6 +48,9 @@
           <Entry name="CommandCounter" type="BASE_TYPES/uint8" />
           <Entry name="CommandErrorCounter" type="BASE_TYPES/uint8" />
         </EntryList>
+      </ContainerDataType>
+
+      <ContainerDataType name="SendHkCmd" baseType="CFE_HDR/CommandHeader">
       </ContainerDataType>
 
       <ContainerDataType name="CommandBase" baseType="CFE_HDR/CommandHeader">
@@ -73,18 +80,18 @@
         </ConstraintSet>
       </ContainerDataType>
 
-      <ContainerDataType name="DoExampleCmd" baseType="CommandBase">
+      <ContainerDataType name="DisplayParamCmd" baseType="CommandBase">
         <ConstraintSet>
           <ValueConstraint entry="Sec.FunctionCode" value="3" />
         </ConstraintSet>
         <EntryList>
-          <Entry type="DoExample_Payload" name="Payload" />
+          <Entry type="DisplayParam_Payload" name="Payload" />
         </EntryList>
       </ContainerDataType>
 
-      <!-- Note the type name here must be "SampleAppTable" to match the C table definition file,
-           but the source code uses the type "SampleAppTable" -->
-      <ContainerDataType name="SampleAppTable" shortDescription="Example Table structure">
+      <!-- Note the type name here must be "ExampleTable" to match the C table definition file,
+           but the source code uses the type "ExampleTable" -->
+      <ContainerDataType name="ExampleTable" shortDescription="Example ExampleTable structure">
         <EntryList>
           <Entry name="Int1" type="BASE_TYPES/uint16" />
           <Entry name="Int2" type="BASE_TYPES/uint16" />
@@ -104,7 +111,7 @@
           <Interface name="SEND_HK" shortDescription="Send telemetry command interface" type="CFE_SB/Telecommand">
             <!-- This uses a bare spacepacket with no payload -->
             <GenericTypeMapSet>
-              <GenericTypeMap name="TelecommandDataType" type="CFE_HDR/CommandHeader" />
+              <GenericTypeMap name="TelecommandDataType" type="SendHkCmd" />
             </GenericTypeMapSet>
           </Interface>
           <Interface name="HK_TLM" shortDescription="Software bus housekeeping telemetry interface" type="CFE_SB/Telemetry">

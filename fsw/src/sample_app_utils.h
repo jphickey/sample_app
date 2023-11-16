@@ -18,22 +18,18 @@
 
 /**
  * @file
- *
- * Define sample app table
+ *   This file contains the prototypes for the Sample App utility functions
  */
 
-#ifndef SAMPLE_APP_TABLE_H
-#define SAMPLE_APP_TABLE_H
-
-#include "sample_app_eds_typedefs.h"
+#ifndef SAMPLE_APP_UTILS_H
+#define SAMPLE_APP_UTILS_H
 
 /*
- * The EDS defines the table type name as "SampleAppTable" so it matches
- * the runtime table name, but the source code refers to the type
- * as SAMPLE_APP_Table_t
- *
- * This discrepancy can be worked around with a typedef for now
- */
-typedef SAMPLE_APP_SampleAppTable_t SAMPLE_APP_Table_t;
+** Required header files.
+*/
+#include "sample_app.h"
 
-#endif /* SAMPLE_APP_TABLE_H */
+int32 SAMPLE_APP_TblValidationFunc(void *TblData);
+void  SAMPLE_APP_GetCrc(const char *TableName);
+
+#endif /* SAMPLE_APP_UTILS_H */

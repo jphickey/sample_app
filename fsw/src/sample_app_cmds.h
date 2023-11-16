@@ -18,37 +18,22 @@
 
 /**
  * @file
- *
- * Common definitions for all sample_app coverage tests
+ *   This file contains the prototypes for the Sample App Ground Command-handling functions
  */
 
-#ifndef SAMPLE_APP_COVERAGETEST_COMMON_H
-#define SAMPLE_APP_COVERAGETEST_COMMON_H
+#ifndef SAMPLE_APP_CMDS_H
+#define SAMPLE_APP_CMDS_H
 
 /*
- * Includes
- */
-
-#include "utassert.h"
-#include "uttest.h"
-#include "utstubs.h"
-
-#include "setup.h"
-#include "eventcheck.h"
-
-#include "cfe.h"
-#include "sample_app_eventids.h"
-#include "sample_app.h"
-#include "sample_app_dispatch.h"
-#include "sample_app_cmds.h"
-#include "sample_app_utils.h"
-#include "sample_app_msgids.h"
+** Required header files.
+*/
+#include "cfe_error.h"
 #include "sample_app_msg.h"
-#include "sample_app_tbl.h"
 
-/*
- * Macro to add a test case to the list of tests to execute
- */
-#define ADD_TEST(test) UtTest_Add((Test_##test), Sample_UT_Setup, Sample_UT_TearDown, #test)
+CFE_Status_t SAMPLE_APP_SendHkCmd(const SAMPLE_APP_SendHkCmd_t *Msg);
+CFE_Status_t SAMPLE_APP_ResetCountersCmd(const SAMPLE_APP_ResetCountersCmd_t *Msg);
+CFE_Status_t SAMPLE_APP_ProcessCmd(const SAMPLE_APP_ProcessCmd_t *Msg);
+CFE_Status_t SAMPLE_APP_NoopCmd(const SAMPLE_APP_NoopCmd_t *Msg);
+CFE_Status_t SAMPLE_APP_DisplayParamCmd(const SAMPLE_APP_DisplayParamCmd_t *Msg);
 
-#endif /* SAMPLE_APP_COVERAGETEST_COMMON_H */
+#endif /* SAMPLE_APP_CMDS_H */
