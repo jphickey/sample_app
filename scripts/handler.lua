@@ -43,5 +43,19 @@ function TestMessageHandler(inmsg)
     end
 end
 
+function TestExampleMessageSend(msg)
+    print "This is TestFunc2()"
 
-TestMessageSender("NoopCmd")
+    if (msg) then
+        print ("Got A Message: " .. tostring(msg))
+
+        -- Using the "call" syntax returns the actual value
+        print ("The Input value is: " .. msg.Value())
+    end
+
+    testobj = EdsDB.NewMessage(outintf, "NoopCMD")
+
+    print("obj=" .. EdsDB.ToHexString(testobj))
+
+    CFE.SendMsg(testobj)
+end
