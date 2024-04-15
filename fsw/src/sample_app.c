@@ -112,6 +112,7 @@ void SAMPLE_APP_Main(void)
 int32 SAMPLE_APP_Init(void)
 {
     int32 status;
+    char VersionString[SAMPLE_APP_CFG_MAX_VERSION_STR_LEN];
 
     /* Zero out the global data structure */
     memset(&SAMPLE_APP_Data, 0, sizeof(SAMPLE_APP_Data));
@@ -174,6 +175,7 @@ int32 SAMPLE_APP_Init(void)
         {
             CFE_ES_WriteToSysLog("Sample App: Error Subscribing to Command, RC = 0x%08lX\n", (unsigned long)status);
         }
+
     }
 
     if (status == CFE_SUCCESS)
@@ -192,8 +194,11 @@ int32 SAMPLE_APP_Init(void)
             status = CFE_TBL_Load(SAMPLE_APP_Data.TblHandles[0], CFE_TBL_SRC_FILE, SAMPLE_APP_TABLE_FILE);
         }
 
+        CFE_Config_GetVersionString(VersionString, SAMPLE_APP_CFG_MAX_VERSION_STR_LEN, "Sample App",
+                          SAMPLE_APP_VERSION, SAMPLE_APP_BUILD_CODENAME, SAMPLE_APP_LAST_OFFICIAL);
+
         CFE_EVS_SendEvent(SAMPLE_APP_INIT_INF_EID, CFE_EVS_EventType_INFORMATION, "Sample App Initialized.%s",
-                          SAMPLE_APP_VERSION_STRING);
+                          VersionString);
     }
 
     if (status == CFE_SUCCESS)

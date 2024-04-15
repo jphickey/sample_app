@@ -18,24 +18,13 @@
 
 /**
  * @file
- *   This file contains the prototypes for the Sample App Ground Command-handling functions
+ *   SAMPLE_APP Application Topic IDs
  */
+#ifndef SAMPLE_APP_TOPICIDS_H
+#define SAMPLE_APP_TOPICIDS_H
 
-#ifndef SAMPLE_APP_CMDS_H
-#define SAMPLE_APP_CMDS_H
+#define CFE_MISSION_SAMPLE_APP_CMD_TOPICID       0x82
+#define CFE_MISSION_SAMPLE_APP_SEND_HK_TOPICID   0x83
+#define CFE_MISSION_SAMPLE_APP_HK_TLM_TOPICID    0x83
 
-/*
-** Required header files.
-*/
-#include "cfe_error.h"
-#include "sample_app_msg.h"
-
-CFE_Status_t SAMPLE_APP_SendHkCmd(const SAMPLE_APP_SendHkCmd_t *Msg);
-CFE_Status_t SAMPLE_APP_ResetCountersCmd(const SAMPLE_APP_ResetCountersCmd_t *Msg);
-CFE_Status_t SAMPLE_APP_ProcessCmd(const SAMPLE_APP_ProcessCmd_t *Msg);
-CFE_Status_t SAMPLE_APP_NoopCmd(const SAMPLE_APP_NoopCmd_t *Msg);
-CFE_Status_t SAMPLE_APP_DisplayParamCmd(const SAMPLE_APP_DisplayParamCmd_t *Msg);
-CFE_Status_t SAMPLE_APP_DoExample(const SAMPLE_APP_DoExampleCmd_t *Msg);
-
-
-#endif /* SAMPLE_APP_CMDS_H */
+#endif

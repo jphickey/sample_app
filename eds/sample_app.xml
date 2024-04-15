@@ -33,6 +33,12 @@
 
     <DataTypeSet>
 
+      <ContainerDataType name="DoExample_Payload" shortDescription="Example Command with a payload/argument">
+        <EntryList>
+          <Entry name="Value" type="BASE_TYPES/uint16" shortDescription="Example command argument" />
+        </EntryList>
+      </ContainerDataType>
+
       <StringDataType name="ExampleString" length="${SAMPLE_APP/STRING_VAL_LEN}" />
 
       <ContainerDataType name="DisplayParam_Payload" shortDescription="Example Command with a payload/argument">
@@ -86,6 +92,15 @@
         </ConstraintSet>
         <EntryList>
           <Entry type="DisplayParam_Payload" name="Payload" />
+        </EntryList>
+      </ContainerDataType>
+
+      <ContainerDataType name="DoExampleCmd" baseType="CommandBase">
+        <ConstraintSet>
+          <ValueConstraint entry="Sec.FunctionCode" value="4" />
+        </ConstraintSet>
+        <EntryList>
+          <Entry type="DoExample_Payload" name="Payload" />
         </EntryList>
       </ContainerDataType>
 

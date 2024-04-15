@@ -161,3 +161,21 @@ CFE_Status_t SAMPLE_APP_DisplayParamCmd(const SAMPLE_APP_DisplayParamCmd_t *Msg)
 
     return CFE_SUCCESS;
 }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
+/*                                                                            */
+/* A simple example command that displays a passed-in value                   */
+/*                                                                            */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
+CFE_Status_t SAMPLE_APP_DoExample(const SAMPLE_APP_DoExampleCmd_t *Msg)
+{
+    CFE_ES_WriteToSysLog("%s: Command Value=%u", __func__, (unsigned int)Msg->Payload.Value);
+
+    /* JPHFIX: Lua bindings need update to allow proper "const" objects */
+    SCRIPTENGINE_CallFunctionArg("TestFunc2", (void*)&Msg->Payload,
+        EDS_INDEX(SAMPLE_APP), SAMPLE_APP_DoExample_Payload_DATADICTIONARY);
+
+    return CFE_SUCCESS;
+}
+
+
