@@ -16,13 +16,6 @@ set(SAMPLE_APP_PLATFORM_CONFIG_FILE_LIST
   sample_app_msgids.h
 )
 
-if (CFE_EDS_ENABLED_BUILD)
-
-  # In an EDS-based build, these files come generated from the EDS tool
-  set(SAMPLE_APP_CFGFILE_SRC_sample_app_msgids "sample_app_eds_msgids.h")
-
-endif()
-
 # Create wrappers around the all the config header files
 # This makes them individually overridable by the missions, without modifying
 # the distribution default copies

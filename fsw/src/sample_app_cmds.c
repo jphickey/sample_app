@@ -167,7 +167,7 @@ CFE_Status_t SAMPLE_APP_DisplayParamCmd(const SAMPLE_APP_DisplayParamCmd_t *Msg)
 /* A simple example command that displays a passed-in value                   */
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-CFE_Status_t SAMPLE_APP_DoExample(const SAMPLE_APP_DoExampleCmd_t *Msg)
+CFE_Status_t SAMPLE_APP_DoExampleCmd(const SAMPLE_APP_DoExampleCmd_t *Msg)
 {
     CFE_ES_WriteToSysLog("%s: Command Value=%u", __func__, (unsigned int)Msg->Payload.Value);
 
@@ -177,5 +177,3 @@ CFE_Status_t SAMPLE_APP_DoExample(const SAMPLE_APP_DoExampleCmd_t *Msg)
 
     return CFE_SUCCESS;
 }
-
-
