@@ -18,37 +18,13 @@
 
 /**
  * @file
- *
- * Common definitions for all sample_app coverage tests
+ *   SAMPLE_APP Application Topic IDs
  */
+#ifndef SAMPLE_APP_TOPICIDS_H
+#define SAMPLE_APP_TOPICIDS_H
 
-#ifndef SAMPLE_APP_COVERAGETEST_COMMON_H
-#define SAMPLE_APP_COVERAGETEST_COMMON_H
+#define CFE_MISSION_SAMPLE_APP_CMD_TOPICID       0x82
+#define CFE_MISSION_SAMPLE_APP_SEND_HK_TOPICID   0x83
+#define CFE_MISSION_SAMPLE_APP_HK_TLM_TOPICID    0x83
 
-/*
- * Includes
- */
-
-#include "utassert.h"
-#include "uttest.h"
-#include "utstubs.h"
-
-#include "setup.h"
-#include "eventcheck.h"
-
-#include "cfe.h"
-#include "sample_app_eventids.h"
-#include "sample_app.h"
-#include "sample_app_dispatch.h"
-#include "sample_app_cmds.h"
-#include "sample_app_utils.h"
-#include "sample_app_msgids.h"
-#include "sample_app_msg.h"
-#include "sample_app_tbl.h"
-
-/*
- * Macro to add a test case to the list of tests to execute
- */
-#define ADD_TEST(test) UtTest_Add((Test_##test), Sample_UT_Setup, Sample_UT_TearDown, #test)
-
-#endif /* SAMPLE_APP_COVERAGETEST_COMMON_H */
+#endif

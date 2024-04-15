@@ -18,21 +18,34 @@
 
 /**
  * @file
+ *   Specification for the SAMPLE_APP command and telemetry
+ *   message constant definitions.
  *
- * Define SAMPLE App  Messages and info
+ *  For SAMPLE_APP this is only the function/command code definitions
  */
+#ifndef SAMPLE_APP_MSGDEFS_H
+#define SAMPLE_APP_MSGDEFS_H
 
-#ifndef SAMPLE_APP_MSG_H
-#define SAMPLE_APP_MSG_H
+#include "common_types.h"
+#include "sample_app_fcncodes.h"
 
+typedef struct SAMPLE_APP_DisplayParam_Payload
+{
+    uint32 ValU32;                            /**< 32 bit unsigned integer value */
+    int16  ValI16;                            /**< 16 bit signed integer value */
+    char   ValStr[SAMPLE_APP_STRING_VAL_LEN]; /**< An example string */
+} SAMPLE_APP_DisplayParam_Payload_t;
+
+/*************************************************************************/
 /*
- * EDS-defined function codes (*_CC)
- */
-#include "sample_app_eds_cc.h"
+** Type definition (Sample App housekeeping)
+*/
 
-/*
- * EDS-defined message data types
- */
-#include "sample_app_eds_typedefs.h"
+typedef struct SAMPLE_APP_HkTlm_Payload
+{
+    uint8 CommandErrorCounter;
+    uint8 CommandCounter;
+    uint8 spare[2];
+} SAMPLE_APP_HkTlm_Payload_t;
 
-#endif /* SAMPLE_APP_MSG_H */
+#endif

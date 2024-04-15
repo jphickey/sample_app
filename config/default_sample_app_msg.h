@@ -18,22 +18,21 @@
 
 /**
  * @file
+ *   Specification for the SAMPLE_APP command and telemetry
+ *   message data types.
  *
- * Define sample app table
- */
-
-#ifndef SAMPLE_APP_TABLE_H
-#define SAMPLE_APP_TABLE_H
-
-#include "sample_app_eds_typedefs.h"
-
-/*
- * The EDS defines the table type name as "SampleAppTable" so it matches
- * the runtime table name, but the source code refers to the type
- * as SAMPLE_APP_Table_t
+ * This is a compatibility header for the "sample_app_msg.h" file that has
+ * traditionally provided the message definitions for cFS apps.
  *
- * This discrepancy can be worked around with a typedef for now
+ * @note This file may be overridden/superceded by mission-provided defintions
+ * either by overriding this header or by generating definitions from a command/data
+ * dictionary tool.
  */
-typedef SAMPLE_APP_SampleAppTable_t SAMPLE_APP_Table_t;
+#ifndef SAMPLE_APP_MSG_H
+#define SAMPLE_APP_MSG_H
 
-#endif /* SAMPLE_APP_TABLE_H */
+#include "sample_app_mission_cfg.h"
+#include "sample_app_msgdefs.h"
+#include "sample_app_msgstruct.h"
+
+#endif

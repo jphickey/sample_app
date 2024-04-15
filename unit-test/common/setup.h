@@ -16,39 +16,30 @@
  * limitations under the License.
  ************************************************************************/
 
-/**
- * @file
- *
- * Common definitions for all sample_app coverage tests
- */
-
-#ifndef SAMPLE_APP_COVERAGETEST_COMMON_H
-#define SAMPLE_APP_COVERAGETEST_COMMON_H
-
 /*
- * Includes
- */
+** Purpose:
+** Coverage Unit Test cases for the SAMPLE Application
+**
+** Notes:
+** This implements various test cases to exercise all code
+** paths through all functions defined in the SAMPLE application.
+**
+** It is primarily focused at providing examples of the various
+** stub configurations, hook functions, and wrapper calls that
+** are often needed when coercing certain code paths through
+** complex functions.
+*/
+
+#ifndef SETUP_H
+#define SETUP_H
+
+#include "common_types.h"
 
 #include "utassert.h"
 #include "uttest.h"
 #include "utstubs.h"
 
-#include "setup.h"
-#include "eventcheck.h"
+void Sample_UT_Setup(void);
+void Sample_UT_TearDown(void);
 
-#include "cfe.h"
-#include "sample_app_eventids.h"
-#include "sample_app.h"
-#include "sample_app_dispatch.h"
-#include "sample_app_cmds.h"
-#include "sample_app_utils.h"
-#include "sample_app_msgids.h"
-#include "sample_app_msg.h"
-#include "sample_app_tbl.h"
-
-/*
- * Macro to add a test case to the list of tests to execute
- */
-#define ADD_TEST(test) UtTest_Add((Test_##test), Sample_UT_Setup, Sample_UT_TearDown, #test)
-
-#endif /* SAMPLE_APP_COVERAGETEST_COMMON_H */
+#endif

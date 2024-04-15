@@ -31,21 +31,42 @@
 #include "sample_app_msgids.h"
 #include "sample_app_msg.h"
 
+#include "sample_app_eds_dispatcher.h"
+#include "sample_app_eds_dictionary.h"
+
+/*
+ * Define a lookup table for SAMPLE app command codes
+ */
+/* clang-format off */
+static const EdsDispatchTable_SAMPLE_APP_Application_CFE_SB_Telecommand_t SAMPLE_TC_DISPATCH_TABLE = {
+    .CMD = {
+	    .NoopCmd_indication = SAMPLE_APP_Noop,
+            .ResetCountersCmd_indication = SAMPLE_APP_ResetCounters,
+            .ProcessCmd_indication = SAMPLE_APP_Process,
+            .DisplayParamCmd_indication  = SAMPLE_APP_DisplayParamCmd,
+            .DoExampleCmd_indication = SAMPLE_APP_DoExample
+    },
+    .SEND_HK = {
+	    .indication = SAMPLE_APP_SendHkCmd
+    }
+};
+/* clang-format on */
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 /*                                                                            */
-/* Verify command packet length                                               */
+/*  Purpose:                                                                  */
+/*     This routine will process any packet that is received on the SAMPLE    */
+/*     command pipe.                                                          */
 /*                                                                            */
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-bool SAMPLE_APP_VerifyCmdLength(const CFE_MSG_Message_t *MsgPtr, size_t ExpectedLength)
+/* * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * *  * *  * * * * */
+void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t *SBBufPtr)
 {
-    CFE_Status_t Status;
-    CFE_SB_MsgId_t MsgId;
-    CFE_MSG_Size_t MsgSize;
+    CFE_Status_t      Status;
+    CFE_SB_MsgId_t    MsgId;
+    CFE_MSG_Size_t    MsgSize;
     CFE_MSG_FcnCode_t MsgFc;
 
-    Status = SAMPLE_APP_Application_Component_Telecommand_Dispatch(
-                    CFE_SB_Telecommand_indication_Command_ID,
-                    SBBufPtr, &SAMPLE_TC_DISPATCH_TABLE);
+    Status = EdsDispatch_SAMPLE_APP_Application_Telecommand(SBBufPtr, &SAMPLE_TC_DISPATCH_TABLE);
 
     if (Status != CFE_SUCCESS)
     {
@@ -56,18 +77,18 @@ bool SAMPLE_APP_VerifyCmdLength(const CFE_MSG_Message_t *MsgPtr, size_t Expected
 
         if (Status == CFE_STATUS_UNKNOWN_MSG_ID)
         {
-            CFE_EVS_SendEvent(SAMPLE_APP_INVALID_MSGID_ERR_EID, CFE_EVS_EventType_ERROR,
+            CFE_EVS_SendEvent(SAMPLE_APP_MID_ERR_EID, CFE_EVS_EventType_ERROR,
                               "SAMPLE: invalid command packet,MID = 0x%x", (unsigned int)CFE_SB_MsgIdToValue(MsgId));
         }
         else if (Status == CFE_STATUS_WRONG_MSG_LENGTH)
         {
-            CFE_EVS_SendEvent(SAMPLE_APP_LEN_ERR_EID, CFE_EVS_EventType_ERROR,
-                            "Invalid Msg length: ID = 0x%X,  CC = %u, Len = %u",
-                            (unsigned int)CFE_SB_MsgIdToValue(MsgId), (unsigned int)MsgFc, (unsigned int)MsgSize);
+            CFE_EVS_SendEvent(SAMPLE_APP_CMD_LEN_ERR_EID, CFE_EVS_EventType_ERROR,
+                              "Invalid Msg length: ID = 0x%X,  CC = %u, Len = %u",
+                              (unsigned int)CFE_SB_MsgIdToValue(MsgId), (unsigned int)MsgFc, (unsigned int)MsgSize);
         }
         else
         {
-            CFE_EVS_SendEvent(SAMPLE_APP_COMMAND_ERR_EID, CFE_EVS_EventType_ERROR,
+            CFE_EVS_SendEvent(SAMPLE_APP_CC_ERR_EID, CFE_EVS_EventType_ERROR,
                               "SAMPLE: Invalid ground command code: CC = %d", (int)MsgFc);
         }
     }

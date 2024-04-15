@@ -18,37 +18,26 @@
 
 /**
  * @file
+ *   Specification for the SAMPLE_APP command function codes
  *
- * Common definitions for all sample_app coverage tests
+ * @note
+ *   This file should be strictly limited to the command/function code (CC)
+ *   macro definitions.  Other definitions such as enums, typedefs, or other
+ *   macros should be placed in the msgdefs.h or msg.h files.
  */
+#ifndef SAMPLE_APP_FCNCODES_H
+#define SAMPLE_APP_FCNCODES_H
 
-#ifndef SAMPLE_APP_COVERAGETEST_COMMON_H
-#define SAMPLE_APP_COVERAGETEST_COMMON_H
+/************************************************************************
+ * Macro Definitions
+ ************************************************************************/
 
 /*
- * Includes
- */
+** Sample App command codes
+*/
+#define SAMPLE_APP_NOOP_CC           0
+#define SAMPLE_APP_RESET_COUNTERS_CC 1
+#define SAMPLE_APP_PROCESS_CC        2
+#define SAMPLE_APP_DISPLAY_PARAM_CC  3
 
-#include "utassert.h"
-#include "uttest.h"
-#include "utstubs.h"
-
-#include "setup.h"
-#include "eventcheck.h"
-
-#include "cfe.h"
-#include "sample_app_eventids.h"
-#include "sample_app.h"
-#include "sample_app_dispatch.h"
-#include "sample_app_cmds.h"
-#include "sample_app_utils.h"
-#include "sample_app_msgids.h"
-#include "sample_app_msg.h"
-#include "sample_app_tbl.h"
-
-/*
- * Macro to add a test case to the list of tests to execute
- */
-#define ADD_TEST(test) UtTest_Add((Test_##test), Sample_UT_Setup, Sample_UT_TearDown, #test)
-
-#endif /* SAMPLE_APP_COVERAGETEST_COMMON_H */
+#endif

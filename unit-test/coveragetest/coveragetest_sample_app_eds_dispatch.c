@@ -16,35 +16,47 @@
  * limitations under the License.
  ************************************************************************/
 
-/**
- * @file
- *
- *
- * Purpose:
- * Extra scaffolding functions for the sample_app unit test
- *
- * Notes:
- * This is an extra UT-specific extern declaration
- * to obtain access to an internal data structure
- *
- * UT often needs to modify internal data structures in ways that
- * actual applications never would (bypassing the normal API) in
- * order to exercise or set up for off-nominal cases.
- */
-
-#ifndef UT_SAMPLE_APP_H
-#define UT_SAMPLE_APP_H
+/*
+** Purpose:
+** Coverage Unit Test cases for the SAMPLE Application
+**
+** Notes:
+** This implements various test cases to exercise all code
+** paths through all functions defined in the SAMPLE application.
+**
+** It is primarily focused at providing examples of the various
+** stub configurations, hook functions, and wrapper calls that
+** are often needed when coercing certain code paths through
+** complex functions.
+*/
 
 /*
- * Necessary to include these here to get the definition of the
- * "SAMPLE_APP_Data_t" typedef.
+ * Includes
  */
-#include "sample_app_events.h"
+
+#include "sample_app_coveragetest_common.h"
 #include "sample_app.h"
+#include "sample_app_dispatch.h"
+#include "sample_app_cmds.h"
 
 /*
- * Allow UT access to the global "SAMPLE_APP_Data" object.
- */
-extern SAMPLE_APP_Data_t SAMPLE_APP_Data;
+**********************************************************************************
+**          TEST CASE FUNCTIONS
+**********************************************************************************
+*/
 
-#endif /* UT_SAMPLE_APP_H */
+void Test_SAMPLE_APP_TaskPipe(void)
+{
+    /*
+     * Test Case For:
+     * void SAMPLE_APP_TaskPipe
+     */
+}
+
+/*
+ * Register the test cases to execute with the unit test tool
+ */
+void UtTest_Setup(void)
+{
+    ADD_TEST(SAMPLE_APP_TaskPipe);
+}
