@@ -32,10 +32,28 @@
  * either by overriding this header or by generating definitions from a command/data
  * dictionary tool.
  */
-#ifndef DEFAULT_SAMPLE_APP_PLATFORM_CFG_H
-#define DEFAULT_SAMPLE_APP_PLATFORM_CFG_H
+#ifndef SAMPLE_APP_INTERNAL_CFG_H
+#define SAMPLE_APP_INTERNAL_CFG_H
 
-#include "sample_app_mission_cfg.h"
-#include "sample_app_internal_cfg.h"
+#include "sample_app_internal_cfg_values.h"
+
+/***********************************************************************/
+#define SAMPLE_APP_PLATFORM_PIPE_DEPTH         SAMPLE_APP_PLATFORM_CFGVAL(PIPE_DEPTH)
+#define DEFAULT_SAMPLE_APP_PLATFORM_PIPE_DEPTH 32 /* Depth of the Command Pipe for Application */
+
+#define SAMPLE_APP_PLATFORM_PIPE_NAME         SAMPLE_APP_PLATFORM_CFGVAL(PIPE_NAME)
+#define DEFAULT_SAMPLE_APP_PLATFORM_PIPE_NAME "SAMPLE_APP_CMD_PIPE"
+
+#define SAMPLE_APP_PLATFORM_NUMBER_OF_TABLES         SAMPLE_APP_PLATFORM_CFGVAL(NUMBER_OF_TABLES)
+#define DEFAULT_SAMPLE_APP_PLATFORM_NUMBER_OF_TABLES 1 /* Number of Example Table(s) */
+
+#define SAMPLE_APP_PLATFORM_TABLE_OUT_OF_RANGE_ERR_CODE         SAMPLE_APP_PLATFORM_CFGVAL(TABLE_OUT_OF_RANGE_ERR_CODE)
+#define DEFAULT_SAMPLE_APP_PLATFORM_TABLE_OUT_OF_RANGE_ERR_CODE -1
+
+#define SAMPLE_APP_PLATFORM_TBL_ELEMENT_1_MAX         SAMPLE_APP_PLATFORM_CFGVAL(TBL_ELEMENT_1_MAX)
+#define DEFAULT_SAMPLE_APP_PLATFORM_TBL_ELEMENT_1_MAX 10
+
+#define SAMPLE_APP_PLATFORM_TABLE_FILE         SAMPLE_APP_PLATFORM_CFGVAL(TABLE_FILE)
+#define DEFAULT_SAMPLE_APP_PLATFORM_TABLE_FILE "/cf/sample_app_tbl.tbl"
 
 #endif

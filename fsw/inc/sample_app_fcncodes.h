@@ -18,22 +18,28 @@
 
 /**
  * @file
- *   Specification for the SAMPLE_APP table related
- *   constant definitions.
+ *   Specification for the SAMPLE_APP command function codes
+ *
+ * @note
+ *   This file should be strictly limited to the command/function code (CC)
+ *   macro definitions.  Other definitions such as enums, typedefs, or other
+ *   macros should be placed in the msgdefs.h or msg.h files.
  */
-#ifndef SAMPLE_APP_TBLDEFS_H
-#define SAMPLE_APP_TBLDEFS_H
+#ifndef SAMPLE_APP_FCNCODES_H
+#define SAMPLE_APP_FCNCODES_H
 
-#include "common_types.h"
-#include "sample_app_mission_cfg.h"
+#include "sample_app_fcncode_values.h"
+
+/************************************************************************
+ * Macro Definitions
+ ************************************************************************/
 
 /*
-** Example Table structure
+** Sample App command codes
 */
-typedef struct
-{
-    uint16 Int1;
-    uint16 Int2;
-} SAMPLE_APP_ExampleTable_t;
+#define SAMPLE_APP_NOOP_CC           SAMPLE_APP_CCVAL(NOOP)
+#define SAMPLE_APP_RESET_COUNTERS_CC SAMPLE_APP_CCVAL(RESET_COUNTERS)
+#define SAMPLE_APP_PROCESS_CC        SAMPLE_APP_CCVAL(PROCESS)
+#define SAMPLE_APP_DISPLAY_PARAM_CC  SAMPLE_APP_CCVAL(DISPLAY_PARAM)
 
 #endif

@@ -18,22 +18,13 @@
 
 /**
  * @file
- *   Specification for the SAMPLE_APP table related
- *   constant definitions.
+ *   Specification for the SAMPLE_APP topic ID values
  */
-#ifndef SAMPLE_APP_TBLDEFS_H
-#define SAMPLE_APP_TBLDEFS_H
+#ifndef EDS_SAMPLE_APP_TOPICIDS_H
+#define EDS_SAMPLE_APP_TOPICIDS_H
 
-#include "common_types.h"
-#include "sample_app_mission_cfg.h"
+#include "cfe_mission_eds_designparameters.h"
 
-/*
-** Example Table structure
-*/
-typedef struct
-{
-    uint16 Int1;
-    uint16 Int2;
-} SAMPLE_APP_ExampleTable_t;
+#define SAMPLE_APP_MISSION_TIDVAL(x) EdsParam_CFE_MISSION_SAMPLE_APP_##x##_TOPICID
 
 #endif

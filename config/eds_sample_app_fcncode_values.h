@@ -18,13 +18,22 @@
 
 /**
  * @file
- *   SAMPLE_APP Application Topic IDs
+ *   Specification for the CFE Executive Services (SAMPLE_APP) command function codes
+ *
+ * @note
+ *   This file should be strictly limited to the command/function code (CC)
+ *   macro definitions.  Other definitions such as enums, typedefs, or other
+ *   macros should be placed in the msgdefs.h or msg.h files.
  */
-#ifndef SAMPLE_APP_TOPICIDS_H
-#define SAMPLE_APP_TOPICIDS_H
+#ifndef EDS_SAMPLE_APP_FCNCODES_H
+#define EDS_SAMPLE_APP_FCNCODES_H
 
-#define CFE_MISSION_SAMPLE_APP_CMD_TOPICID       0x82
-#define CFE_MISSION_SAMPLE_APP_SEND_HK_TOPICID   0x83
-#define CFE_MISSION_SAMPLE_APP_HK_TLM_TOPICID    0x83
+#include "sample_app_eds_cc.h"
+
+/************************************************************************
+ * Macro Definitions
+ ************************************************************************/
+
+#define SAMPLE_APP_CCVAL(x) EDS_CONTAINER_SAMPLE_APP_##x##_CC
 
 #endif

@@ -6,7 +6,7 @@ set(APP_SRC_FILES
   fsw/src/sample_app_utils.c
 )
 
-if (CFE_EDS_ENABLED_BUILD)
+if (CFE_EDS_ENABLED)
   list(APPEND APP_SRC_FILES
     fsw/src/sample_app_eds_dispatch.c
   )

@@ -42,10 +42,10 @@ CFE_Status_t SAMPLE_APP_TblValidationFunc(void *TblData)
     /*
     ** Sample Example Table Validation
     */
-    if (TblDataPtr->Int1 > SAMPLE_APP_TBL_ELEMENT_1_MAX)
+    if (TblDataPtr->Int1 > SAMPLE_APP_PLATFORM_TBL_ELEMENT_1_MAX)
     {
         /* First element is out of range, return an appropriate error code */
-        ReturnCode = SAMPLE_APP_TABLE_OUT_OF_RANGE_ERR_CODE;
+        ReturnCode = SAMPLE_APP_PLATFORM_TABLE_OUT_OF_RANGE_ERR_CODE;
     }
 
     return ReturnCode;

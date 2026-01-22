@@ -25,8 +25,8 @@
  *   Constants and enumerated types related to these message structures
  *   are defined in sample_app_msgdefs.h.
  */
-#ifndef SAMPLE_APP_MSGSTRUCT_H
-#define SAMPLE_APP_MSGSTRUCT_H
+#ifndef DEFAULT_SAMPLE_APP_MSGSTRUCT_H
+#define DEFAULT_SAMPLE_APP_MSGSTRUCT_H
 
 /************************************************************************
  * Includes

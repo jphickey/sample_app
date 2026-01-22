@@ -37,12 +37,22 @@
 /*
  * Define a lookup table for SAMPLE app command codes
  */
-static const EdsDispatchTable_SAMPLE_APP_Application_CFE_SB_Telecommand_t SAMPLE_TC_DISPATCH_TABLE = {
-    .CMD     = {.NoopCmd_indication          = SAMPLE_APP_NoopCmd,
-            .ResetCountersCmd_indication = SAMPLE_APP_ResetCountersCmd,
-            .ProcessCmd_indication       = SAMPLE_APP_ProcessCmd,
-            .DisplayParamCmd_indication  = SAMPLE_APP_DisplayParamCmd},
-    .SEND_HK = {.indication = SAMPLE_APP_SendHkCmd}};
+/* clang-format off */
+static const EdsDispatchTable_EdsComponent_SAMPLE_APP_Application_CFE_SB_Telecommand_t SAMPLE_TC_DISPATCH_TABLE = 
+{
+    .CMD =
+    {
+        .NoopCmd_indication          = SAMPLE_APP_NoopCmd,
+        .ResetCountersCmd_indication = SAMPLE_APP_ResetCountersCmd,
+        .ProcessCmd_indication       = SAMPLE_APP_ProcessCmd,
+        .DisplayParamCmd_indication  = SAMPLE_APP_DisplayParamCmd
+    },
+    .SEND_HK =
+    {
+        .indication = SAMPLE_APP_SendHkCmd
+    }
+};
+/* clang-format on */
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 /*                                                                            */
@@ -58,7 +68,7 @@ void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t *SBBufPtr)
     CFE_MSG_Size_t    MsgSize;
     CFE_MSG_FcnCode_t MsgFc;
 
-    Status = EdsDispatch_SAMPLE_APP_Application_Telecommand(SBBufPtr, &SAMPLE_TC_DISPATCH_TABLE);
+    Status = EdsDispatch_EdsComponent_SAMPLE_APP_Application_Telecommand(SBBufPtr, &SAMPLE_TC_DISPATCH_TABLE);
 
     if (Status != CFE_SUCCESS)
     {

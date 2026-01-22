@@ -68,7 +68,7 @@ typedef struct
     */
     CFE_SB_PipeId_t CommandPipe;
 
-    CFE_TBL_Handle_t TblHandles[SAMPLE_APP_NUMBER_OF_TABLES];
+    CFE_TBL_Handle_t TblHandles[SAMPLE_APP_PLATFORM_NUMBER_OF_TABLES];
 } SAMPLE_APP_Data_t;
 
 /*

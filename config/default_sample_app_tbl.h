@@ -24,13 +24,10 @@
  *   Constants and enumerated types related to these table structures
  *   are defined in sample_app_tbldefs.h.
  */
-#ifndef SAMPLE_APP_TBL_H
-#define SAMPLE_APP_TBL_H
+#ifndef DEFAULT_SAMPLE_APP_TBL_H
+#define DEFAULT_SAMPLE_APP_TBL_H
 
 #include "sample_app_tbldefs.h"
 #include "sample_app_tblstruct.h"
-
-/* Define filenames of default data images for tables */
-#define SAMPLE_APP_TABLE_FILE "/cf/sample_app_tbl.tbl"
 
 #endif

@@ -18,22 +18,11 @@
 
 /**
  * @file
- *   Specification for the SAMPLE_APP table related
- *   constant definitions.
+ *   Specification for the SAMPLE_APP topic ID values
  */
-#ifndef SAMPLE_APP_TBLDEFS_H
-#define SAMPLE_APP_TBLDEFS_H
+#ifndef DEFAULT_SAMPLE_APP_TOPICID_VALUES_H
+#define DEFAULT_SAMPLE_APP_TOPICID_VALUES_H
 
-#include "common_types.h"
-#include "sample_app_mission_cfg.h"
-
-/*
-** Example Table structure
-*/
-typedef struct
-{
-    uint16 Int1;
-    uint16 Int2;
-} SAMPLE_APP_ExampleTable_t;
+#define SAMPLE_APP_MISSION_TIDVAL(x) DEFAULT_SAMPLE_APP_MISSION_##x##_TOPICID
 
 #endif

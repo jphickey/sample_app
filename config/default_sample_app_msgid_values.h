@@ -18,22 +18,15 @@
 
 /**
  * @file
- *   Specification for the SAMPLE_APP table related
- *   constant definitions.
+ *   SAMPLE_APP Application Topic IDs
  */
-#ifndef SAMPLE_APP_TBLDEFS_H
-#define SAMPLE_APP_TBLDEFS_H
+#ifndef DEFAULT_SAMPLE_APP_MSGID_VALUES_H
+#define DEFAULT_SAMPLE_APP_MSGID_VALUES_H
 
-#include "common_types.h"
-#include "sample_app_mission_cfg.h"
+#include "cfe_core_api_base_msgids.h"
+#include "sample_app_topicids.h"
 
-/*
-** Example Table structure
-*/
-typedef struct
-{
-    uint16 Int1;
-    uint16 Int2;
-} SAMPLE_APP_ExampleTable_t;
+#define SAMPLE_APP_CMD_PLATFORM_MIDVAL(x) CFE_PLATFORM_CMD_TOPICID_TO_MIDV(SAMPLE_APP_MISSION_##x##_TOPICID)
+#define SAMPLE_APP_TLM_PLATFORM_MIDVAL(x) CFE_PLATFORM_TLM_TOPICID_TO_MIDV(SAMPLE_APP_MISSION_##x##_TOPICID)
 
 #endif

@@ -18,22 +18,13 @@
 
 /**
  * @file
- *   Specification for the SAMPLE_APP table related
- *   constant definitions.
+ *   Specification for the SAMPLE_APP command and telemetry
+ *   message payload and constant definitions.
  */
-#ifndef SAMPLE_APP_TBLDEFS_H
-#define SAMPLE_APP_TBLDEFS_H
+#ifndef EDS_SAMPLE_APP_MSGDEFS_H
+#define EDS_SAMPLE_APP_MSGDEFS_H
 
-#include "common_types.h"
-#include "sample_app_mission_cfg.h"
-
-/*
-** Example Table structure
-*/
-typedef struct
-{
-    uint16 Int1;
-    uint16 Int2;
-} SAMPLE_APP_ExampleTable_t;
+#include "sample_app_eds_typedefs.h"
+#include "sample_app_fcncodes.h"
 
 #endif

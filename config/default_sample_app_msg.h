@@ -24,12 +24,12 @@
  * This is a compatibility header for the "sample_app_msg.h" file that has
  * traditionally provided the message definitions for cFS apps.
  *
- * @note This file may be overridden/superceded by mission-provided defintions
+ * @note This file may be overridden/superceded by mission-provided definitions
  * either by overriding this header or by generating definitions from a command/data
  * dictionary tool.
  */
-#ifndef SAMPLE_APP_MSG_H
-#define SAMPLE_APP_MSG_H
+#ifndef DEFAULT_SAMPLE_APP_MSG_H
+#define DEFAULT_SAMPLE_APP_MSG_H
 
 #include "sample_app_mission_cfg.h"
 #include "sample_app_msgdefs.h"

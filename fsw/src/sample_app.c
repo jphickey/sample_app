@@ -136,7 +136,8 @@ CFE_Status_t SAMPLE_APP_Init(void)
         /*
          ** Create Software Bus message pipe.
          */
-        status = CFE_SB_CreatePipe(&SAMPLE_APP_Data.CommandPipe, SAMPLE_APP_PIPE_DEPTH, SAMPLE_APP_PIPE_NAME);
+        status = CFE_SB_CreatePipe(&SAMPLE_APP_Data.CommandPipe, SAMPLE_APP_PLATFORM_PIPE_DEPTH,
+                                   SAMPLE_APP_PLATFORM_PIPE_NAME);
         if (status != CFE_SUCCESS)
         {
             CFE_EVS_SendEvent(SAMPLE_APP_CR_PIPE_ERR_EID, CFE_EVS_EventType_ERROR,
@@ -184,7 +185,7 @@ CFE_Status_t SAMPLE_APP_Init(void)
         }
         else
         {
-            status = CFE_TBL_Load(SAMPLE_APP_Data.TblHandles[0], CFE_TBL_SRC_FILE, SAMPLE_APP_TABLE_FILE);
+            status = CFE_TBL_Load(SAMPLE_APP_Data.TblHandles[0], CFE_TBL_SRC_FILE, SAMPLE_APP_PLATFORM_TABLE_FILE);
         }
 
         CFE_Config_GetVersionString(VersionString, SAMPLE_APP_CFG_MAX_VERSION_STR_LEN, "Sample App", SAMPLE_APP_VERSION,

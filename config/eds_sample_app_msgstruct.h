@@ -18,22 +18,15 @@
 
 /**
  * @file
- *   Specification for the SAMPLE_APP table related
- *   constant definitions.
+ *   Specification for the SAMPLE_APP command and telemetry
+ *   message data types.
  */
-#ifndef SAMPLE_APP_TBLDEFS_H
-#define SAMPLE_APP_TBLDEFS_H
+#ifndef EDS_SAMPLE_APP_MSGSTRUCT_H
+#define EDS_SAMPLE_APP_MSGSTRUCT_H
 
-#include "common_types.h"
-#include "sample_app_mission_cfg.h"
-
-/*
-** Example Table structure
-*/
-typedef struct
-{
-    uint16 Int1;
-    uint16 Int2;
-} SAMPLE_APP_ExampleTable_t;
+/************************************************************************
+ * Includes
+ ************************************************************************/
+#include "sample_app_eds_typedefs.h"
 
 #endif

@@ -18,28 +18,29 @@
 
 /**
  * @file
- *   SAMPLE_APP Application Private Config Definitions
  *
- * This provides default values for configurable items that are internal
- * to this module and do NOT affect the interface(s) of this module.  Changes
- * to items in this file only affect the local module and will be transparent
- * to external entities that are using the public interface(s).
+ * SAMPLE_APP Application Mission Configuration Header File
  *
- * @note This file may be overridden/superceded by mission-provided defintions
+ * This is a compatibility header for the "mission_cfg.h" file that has
+ * traditionally provided public config definitions for each CFS app.
+ *
+ * @note This file may be overridden/superceded by mission-provided definitions
  * either by overriding this header or by generating definitions from a command/data
  * dictionary tool.
  */
-#ifndef SAMPLE_APP_INTERNAL_CFG_H
-#define SAMPLE_APP_INTERNAL_CFG_H
+#ifndef SAMPLE_APP_INTERFACE_CFG_H
+#define SAMPLE_APP_INTERFACE_CFG_H
 
-/***********************************************************************/
-#define SAMPLE_APP_PIPE_DEPTH 32 /* Depth of the Command Pipe for Application */
-#define SAMPLE_APP_PIPE_NAME  "SAMPLE_APP_CMD_PIPE"
+#include "sample_app_interface_cfg_values.h"
 
-#define SAMPLE_APP_NUMBER_OF_TABLES 1 /* Number of Example Table(s) */
-
-#define SAMPLE_APP_TABLE_OUT_OF_RANGE_ERR_CODE -1
-
-#define SAMPLE_APP_TBL_ELEMENT_1_MAX 10
+/**
+ * \brief Length of string buffer in the Display Value command
+ *
+ * The Display Value command offers an example of how to use command
+ * parameters of different types.  This macro controls the length
+ * of the string parameter.
+ */
+#define SAMPLE_APP_MISSION_STRING_VAL_LEN         SAMPLE_APP_MISSION_CFGVAL(STRING_VAL_LEN)
+#define DEFAULT_SAMPLE_APP_MISSION_STRING_VAL_LEN 10
 
 #endif

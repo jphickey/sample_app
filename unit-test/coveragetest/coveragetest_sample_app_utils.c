@@ -57,9 +57,9 @@ void Test_SAMPLE_APP_TblValidationFunc(void)
     /* nominal case (0) should succeed */
     UtAssert_INT32_EQ(SAMPLE_APP_TblValidationFunc(&TestTblData), CFE_SUCCESS);
 
-    /* error case should return SAMPLE_APP_TABLE_OUT_OF_RANGE_ERR_CODE */
-    TestTblData.Int1 = 1 + SAMPLE_APP_TBL_ELEMENT_1_MAX;
-    UtAssert_INT32_EQ(SAMPLE_APP_TblValidationFunc(&TestTblData), SAMPLE_APP_TABLE_OUT_OF_RANGE_ERR_CODE);
+    /* error case should return SAMPLE_APP_PLATFORM_TABLE_OUT_OF_RANGE_ERR_CODE */
+    TestTblData.Int1 = 1 + SAMPLE_APP_PLATFORM_TBL_ELEMENT_1_MAX;
+    UtAssert_INT32_EQ(SAMPLE_APP_TblValidationFunc(&TestTblData), SAMPLE_APP_PLATFORM_TABLE_OUT_OF_RANGE_ERR_CODE);
 }
 
 void Test_SAMPLE_APP_GetCrc(void)

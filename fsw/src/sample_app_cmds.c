@@ -63,7 +63,7 @@ CFE_Status_t SAMPLE_APP_SendHkCmd(const SAMPLE_APP_SendHkCmd_t *Msg)
     /*
     ** Manage any pending table loads, validations, etc.
     */
-    for (i = 0; i < SAMPLE_APP_NUMBER_OF_TABLES; i++)
+    for (i = 0; i < SAMPLE_APP_PLATFORM_NUMBER_OF_TABLES; i++)
     {
         CFE_TBL_Manage(SAMPLE_APP_Data.TblHandles[i]);
     }

@@ -18,22 +18,22 @@
 
 /**
  * @file
- *   Specification for the SAMPLE_APP table related
- *   constant definitions.
+ *   SAMPLE_APP Application Public Definitions
+ *
+ * This provides default values for configurable items that affect
+ * the interface(s) of this module.  This includes the CMD/TLM message
+ * interface, tables definitions, and any other data products that
+ * serve to exchange information with other entities.
+ *
+ * @note This file may be overridden/superceded by mission-provided definitions
+ * either by overriding this header or by generating definitions from a command/data
+ * dictionary tool.
  */
-#ifndef SAMPLE_APP_TBLDEFS_H
-#define SAMPLE_APP_TBLDEFS_H
+#ifndef EDS_SAMPLE_APP_INTERFACE_CFG_H
+#define EDS_SAMPLE_APP_INTERFACE_CFG_H
 
-#include "common_types.h"
-#include "sample_app_mission_cfg.h"
+#include "cfe_mission_eds_designparameters.h"
 
-/*
-** Example Table structure
-*/
-typedef struct
-{
-    uint16 Int1;
-    uint16 Int2;
-} SAMPLE_APP_ExampleTable_t;
+#define CFE_MISSION_ES_CFGVAL(x) EdsParam_CFE_MISSION_ES_##x
 
 #endif

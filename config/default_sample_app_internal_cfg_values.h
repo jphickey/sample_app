@@ -18,22 +18,21 @@
 
 /**
  * @file
- *   Specification for the SAMPLE_APP table related
- *   constant definitions.
+ *   SAMPLE_APP Application Private Config Definitions
+ *
+ * This provides default values for configurable items that are internal
+ * to this module and do NOT affect the interface(s) of this module.  Changes
+ * to items in this file only affect the local module and will be transparent
+ * to external entities that are using the public interface(s).
+ *
+ * @note This file may be overridden/superceded by mission-provided definitions
+ * either by overriding this header or by generating definitions from a command/data
+ * dictionary tool.
  */
-#ifndef SAMPLE_APP_TBLDEFS_H
-#define SAMPLE_APP_TBLDEFS_H
+#ifndef DEFAULT_SAMPLE_APP_INTERNAL_CFG_H
+#define DEFAULT_SAMPLE_APP_INTERNAL_CFG_H
 
-#include "common_types.h"
-#include "sample_app_mission_cfg.h"
-
-/*
-** Example Table structure
-*/
-typedef struct
-{
-    uint16 Int1;
-    uint16 Int2;
-} SAMPLE_APP_ExampleTable_t;
+/* Use the default configuration value for all */
+#define SAMPLE_APP_PLATFORM_CFGVAL(x) DEFAULT_SAMPLE_APP_PLATFORM_##x
 
 #endif

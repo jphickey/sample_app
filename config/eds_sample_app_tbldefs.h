@@ -18,27 +18,12 @@
 
 /**
  * @file
- *   SAMPLE_APP Application Public Definitions
- *
- * This provides default values for configurable items that affect
- * the interface(s) of this module.  This includes the CMD/TLM message
- * interface, tables definitions, and any other data products that
- * serve to exchange information with other entities.
- *
- * @note This file may be overridden/superceded by mission-provided defintions
- * either by overriding this header or by generating definitions from a command/data
- * dictionary tool.
+ *   Specification for the SAMPLE_APP table related
+ *   constant definitions.
  */
-#ifndef SAMPLE_APP_INTERFACE_CFG_H
-#define SAMPLE_APP_INTERFACE_CFG_H
+#ifndef EDS_SAMPLE_APP_TBLDEFS_H
+#define EDS_SAMPLE_APP_TBLDEFS_H
 
-/**
- * \brief Length of string buffer in the Display Value command
- *
- * The Display Value command offers an example of how to use command
- * parameters of different types.  This macro controls the length
- * of the string parameter.
- */
-#define SAMPLE_APP_STRING_VAL_LEN 10
+#include "sample_app_eds_typedefs.h"
 
 #endif
