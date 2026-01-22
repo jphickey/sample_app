@@ -18,21 +18,22 @@
 
 /**
  * @file
- *   Specification for the SAMPLE_APP command and telemetry
- *   message data types.
+ *   SAMPLE_APP Application Public Definitions
  *
- * This is a compatibility header for the "sample_app_msg.h" file that has
- * traditionally provided the message definitions for cFS apps.
+ * This provides default values for configurable items that affect
+ * the interface(s) of this module.  This includes the CMD/TLM message
+ * interface, tables definitions, and any other data products that
+ * serve to exchange information with other entities.
  *
  * @note This file may be overridden/superceded by mission-provided definitions
  * either by overriding this header or by generating definitions from a command/data
  * dictionary tool.
  */
-#ifndef DEFAULT_SAMPLE_APP_MSG_H
-#define DEFAULT_SAMPLE_APP_MSG_H
+#ifndef EDS_SAMPLE_APP_INTERFACE_CFG_H
+#define EDS_SAMPLE_APP_INTERFACE_CFG_H
 
-#include "sample_app_mission_cfg.h"
-#include "sample_app_msgdefs.h"
-#include "sample_app_msgstruct.h"
+#include "cfe_mission_eds_designparameters.h"
+
+#define CFE_MISSION_ES_CFGVAL(x) EdsParam_CFE_MISSION_ES_##x
 
 #endif

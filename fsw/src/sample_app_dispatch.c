@@ -1,7 +1,7 @@
 /************************************************************************
- * NASA Docket No. GSC-18,719-1, and identified as “core Flight System: Bootes”
+ * NASA Docket No. GSC-19,200-1, and identified as "cFS Draco"
  *
- * Copyright (c) 2020 United States Government as represented by the
+ * Copyright (c) 2023 United States Government as represented by the
  * Administrator of the National Aeronautics and Space Administration.
  * All Rights Reserved.
  *
@@ -127,23 +127,35 @@ void SAMPLE_APP_ProcessGroundCommand(const CFE_SB_Buffer_t *SBBufPtr)
 /* * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * *  * *  * * * * */
 void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t *SBBufPtr)
 {
+    static CFE_SB_MsgId_t CMD_MID     = CFE_SB_MSGID_RESERVED;
+    static CFE_SB_MsgId_t SEND_HK_MID = CFE_SB_MSGID_RESERVED;
+
     CFE_SB_MsgId_t MsgId = CFE_SB_INVALID_MSG_ID;
+
+    /* cache the local MID Values here, this avoids repeat lookups */
+    if (!CFE_SB_IsValidMsgId(CMD_MID))
+    {
+        CMD_MID     = CFE_SB_ValueToMsgId(SAMPLE_APP_CMD_MID);
+        SEND_HK_MID = CFE_SB_ValueToMsgId(SAMPLE_APP_SEND_HK_MID);
+    }
 
     CFE_MSG_GetMsgId(&SBBufPtr->Msg, &MsgId);
 
-    switch (CFE_SB_MsgIdToValue(MsgId))
+    /* Process all SB messages */
+    if (CFE_SB_MsgId_Equal(MsgId, SEND_HK_MID))
     {
-        case SAMPLE_APP_CMD_MID:
-            SAMPLE_APP_ProcessGroundCommand(SBBufPtr);
-            break;
-
-        case SAMPLE_APP_SEND_HK_MID:
-            SAMPLE_APP_SendHkCmd((const SAMPLE_APP_SendHkCmd_t *)SBBufPtr);
-            break;
-
-        default:
-            CFE_EVS_SendEvent(SAMPLE_APP_MID_ERR_EID, CFE_EVS_EventType_ERROR,
-                              "SAMPLE: invalid command packet,MID = 0x%x", (unsigned int)CFE_SB_MsgIdToValue(MsgId));
-            break;
+        /* Housekeeping request */
+        SAMPLE_APP_SendHkCmd((const SAMPLE_APP_SendHkCmd_t *)SBBufPtr);
+    }
+    else if (CFE_SB_MsgId_Equal(MsgId, CMD_MID))
+    {
+        /* Ground command */
+        SAMPLE_APP_ProcessGroundCommand(SBBufPtr);
+    }
+    else
+    {
+        /* Unknown command */
+        CFE_EVS_SendEvent(SAMPLE_APP_MID_ERR_EID, CFE_EVS_EventType_ERROR, "SAMPLE: invalid command packet,MID = 0x%x",
+                          (unsigned int)CFE_SB_MsgIdToValue(MsgId));
     }
 }

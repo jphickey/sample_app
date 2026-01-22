@@ -1,7 +1,7 @@
 /************************************************************************
- * NASA Docket No. GSC-18,719-1, and identified as “core Flight System: Bootes”
+ * NASA Docket No. GSC-19,200-1, and identified as "cFS Draco"
  *
- * Copyright (c) 2020 United States Government as represented by the
+ * Copyright (c) 2023 United States Government as represented by the
  * Administrator of the National Aeronautics and Space Administration.
  * All Rights Reserved.
  *
@@ -18,19 +18,20 @@
 
 /**
  * @file
- *   SAMPLE_APP Application Public Definitions
  *
- * This provides default values for configurable items that affect
- * the interface(s) of this module.  This includes the CMD/TLM message
- * interface, tables definitions, and any other data products that
- * serve to exchange information with other entities.
+ * SAMPLE_APP Application Mission Configuration Header File
  *
- * @note This file may be overridden/superceded by mission-provided defintions
+ * This is a compatibility header for the "mission_cfg.h" file that has
+ * traditionally provided public config definitions for each CFS app.
+ *
+ * @note This file may be overridden/superceded by mission-provided definitions
  * either by overriding this header or by generating definitions from a command/data
  * dictionary tool.
  */
 #ifndef SAMPLE_APP_INTERFACE_CFG_H
 #define SAMPLE_APP_INTERFACE_CFG_H
+
+#include "sample_app_interface_cfg_values.h"
 
 /**
  * \brief Length of string buffer in the Display Value command
@@ -39,6 +40,7 @@
  * parameters of different types.  This macro controls the length
  * of the string parameter.
  */
-#define SAMPLE_APP_STRING_VAL_LEN 10
+#define SAMPLE_APP_MISSION_STRING_VAL_LEN         SAMPLE_APP_MISSION_CFGVAL(STRING_VAL_LEN)
+#define DEFAULT_SAMPLE_APP_MISSION_STRING_VAL_LEN 10
 
 #endif

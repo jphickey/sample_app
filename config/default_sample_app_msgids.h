@@ -1,7 +1,7 @@
 /************************************************************************
- * NASA Docket No. GSC-18,719-1, and identified as “core Flight System: Bootes”
+ * NASA Docket No. GSC-19,200-1, and identified as "cFS Draco"
  *
- * Copyright (c) 2020 United States Government as represented by the
+ * Copyright (c) 2023 United States Government as represented by the
  * Administrator of the National Aeronautics and Space Administration.
  * All Rights Reserved.
  *
@@ -20,14 +20,14 @@
  * @file
  *   SAMPLE_APP Application Message IDs
  */
-#ifndef SAMPLE_APP_MSGIDS_H
-#define SAMPLE_APP_MSGIDS_H
+#ifndef DEFAULT_SAMPLE_APP_MSGIDS_H
+#define DEFAULT_SAMPLE_APP_MSGIDS_H
 
 #include "cfe_core_api_base_msgids.h"
-#include "sample_app_topicids.h"
+#include "sample_app_msgid_values.h"
 
-#define SAMPLE_APP_CMD_MID     CFE_PLATFORM_CMD_TOPICID_TO_MIDV(CFE_MISSION_SAMPLE_APP_CMD_TOPICID)
-#define SAMPLE_APP_SEND_HK_MID CFE_PLATFORM_CMD_TOPICID_TO_MIDV(CFE_MISSION_SAMPLE_APP_SEND_HK_TOPICID)
-#define SAMPLE_APP_HK_TLM_MID  CFE_PLATFORM_TLM_TOPICID_TO_MIDV(CFE_MISSION_SAMPLE_APP_HK_TLM_TOPICID)
+#define SAMPLE_APP_CMD_MID     SAMPLE_APP_CMD_PLATFORM_MIDVAL(CMD)
+#define SAMPLE_APP_SEND_HK_MID SAMPLE_APP_CMD_PLATFORM_MIDVAL(SEND_HK)
+#define SAMPLE_APP_HK_TLM_MID  SAMPLE_APP_TLM_PLATFORM_MIDVAL(HK_TLM)
 
 #endif

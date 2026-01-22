@@ -1,7 +1,7 @@
 /************************************************************************
- * NASA Docket No. GSC-18,719-1, and identified as “core Flight System: Bootes”
+ * NASA Docket No. GSC-19,200-1, and identified as "cFS Draco"
  *
- * Copyright (c) 2020 United States Government as represented by the
+ * Copyright (c) 2023 United States Government as represented by the
  * Administrator of the National Aeronautics and Space Administration.
  * All Rights Reserved.
  *
@@ -57,9 +57,9 @@ void Test_SAMPLE_APP_TblValidationFunc(void)
     /* nominal case (0) should succeed */
     UtAssert_INT32_EQ(SAMPLE_APP_TblValidationFunc(&TestTblData), CFE_SUCCESS);
 
-    /* error case should return SAMPLE_APP_TABLE_OUT_OF_RANGE_ERR_CODE */
-    TestTblData.Int1 = 1 + SAMPLE_APP_TBL_ELEMENT_1_MAX;
-    UtAssert_INT32_EQ(SAMPLE_APP_TblValidationFunc(&TestTblData), SAMPLE_APP_TABLE_OUT_OF_RANGE_ERR_CODE);
+    /* error case should return SAMPLE_APP_PLATFORM_TABLE_OUT_OF_RANGE_ERR_CODE */
+    TestTblData.Int1 = 1 + SAMPLE_APP_PLATFORM_TBL_ELEMENT_1_MAX;
+    UtAssert_INT32_EQ(SAMPLE_APP_TblValidationFunc(&TestTblData), SAMPLE_APP_PLATFORM_TABLE_OUT_OF_RANGE_ERR_CODE);
 }
 
 void Test_SAMPLE_APP_GetCrc(void)

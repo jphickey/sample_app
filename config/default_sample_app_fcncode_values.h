@@ -1,7 +1,7 @@
 /************************************************************************
- * NASA Docket No. GSC-18,719-1, and identified as “core Flight System: Bootes”
+ * NASA Docket No. GSC-19,200-1, and identified as "cFS Draco"
  *
- * Copyright (c) 2020 United States Government as represented by the
+ * Copyright (c) 2023 United States Government as represented by the
  * Administrator of the National Aeronautics and Space Administration.
  * All Rights Reserved.
  *
@@ -18,26 +18,28 @@
 
 /**
  * @file
- *   Specification for the SAMPLE_APP command function codes
+ *   Specification for the CFE Executive Services (CFE_ES) command function codes
  *
  * @note
  *   This file should be strictly limited to the command/function code (CC)
  *   macro definitions.  Other definitions such as enums, typedefs, or other
  *   macros should be placed in the msgdefs.h or msg.h files.
  */
-#ifndef SAMPLE_APP_FCNCODES_H
-#define SAMPLE_APP_FCNCODES_H
+#ifndef DEFAULT_SAMPLE_APP_FCNCODE_VALUES_H
+#define DEFAULT_SAMPLE_APP_FCNCODE_VALUES_H
 
 /************************************************************************
  * Macro Definitions
  ************************************************************************/
 
-/*
-** Sample App command codes
-*/
-#define SAMPLE_APP_NOOP_CC           0
-#define SAMPLE_APP_RESET_COUNTERS_CC 1
-#define SAMPLE_APP_PROCESS_CC        2
-#define SAMPLE_APP_DISPLAY_PARAM_CC  3
+#define SAMPLE_APP_CCVAL(x) SAMPLE_APP_FunctionCode_##x
+
+enum SAMPLE_APP_FunctionCode_
+{
+    SAMPLE_APP_FunctionCode_NOOP           = 0,
+    SAMPLE_APP_FunctionCode_RESET_COUNTERS = 1,
+    SAMPLE_APP_FunctionCode_PROCESS        = 2,
+    SAMPLE_APP_FunctionCode_DISPLAY_PARAM  = 3,
+};
 
 #endif

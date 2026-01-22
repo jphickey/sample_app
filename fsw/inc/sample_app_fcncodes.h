@@ -18,21 +18,28 @@
 
 /**
  * @file
- *   Specification for the SAMPLE_APP command and telemetry
- *   message data types.
+ *   Specification for the SAMPLE_APP command function codes
  *
- * This is a compatibility header for the "sample_app_msg.h" file that has
- * traditionally provided the message definitions for cFS apps.
- *
- * @note This file may be overridden/superceded by mission-provided definitions
- * either by overriding this header or by generating definitions from a command/data
- * dictionary tool.
+ * @note
+ *   This file should be strictly limited to the command/function code (CC)
+ *   macro definitions.  Other definitions such as enums, typedefs, or other
+ *   macros should be placed in the msgdefs.h or msg.h files.
  */
-#ifndef DEFAULT_SAMPLE_APP_MSG_H
-#define DEFAULT_SAMPLE_APP_MSG_H
+#ifndef SAMPLE_APP_FCNCODES_H
+#define SAMPLE_APP_FCNCODES_H
 
-#include "sample_app_mission_cfg.h"
-#include "sample_app_msgdefs.h"
-#include "sample_app_msgstruct.h"
+#include "sample_app_fcncode_values.h"
+
+/************************************************************************
+ * Macro Definitions
+ ************************************************************************/
+
+/*
+** Sample App command codes
+*/
+#define SAMPLE_APP_NOOP_CC           SAMPLE_APP_CCVAL(NOOP)
+#define SAMPLE_APP_RESET_COUNTERS_CC SAMPLE_APP_CCVAL(RESET_COUNTERS)
+#define SAMPLE_APP_PROCESS_CC        SAMPLE_APP_CCVAL(PROCESS)
+#define SAMPLE_APP_DISPLAY_PARAM_CC  SAMPLE_APP_CCVAL(DISPLAY_PARAM)
 
 #endif

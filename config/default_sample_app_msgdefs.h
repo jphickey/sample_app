@@ -1,7 +1,7 @@
 /************************************************************************
- * NASA Docket No. GSC-18,719-1, and identified as “core Flight System: Bootes”
+ * NASA Docket No. GSC-19,200-1, and identified as "cFS Draco"
  *
- * Copyright (c) 2020 United States Government as represented by the
+ * Copyright (c) 2023 United States Government as represented by the
  * Administrator of the National Aeronautics and Space Administration.
  * All Rights Reserved.
  *
@@ -19,21 +19,19 @@
 /**
  * @file
  *   Specification for the SAMPLE_APP command and telemetry
- *   message constant definitions.
- *
- *  For SAMPLE_APP this is only the function/command code definitions
+ *   message payload and constant definitions.
  */
-#ifndef SAMPLE_APP_MSGDEFS_H
-#define SAMPLE_APP_MSGDEFS_H
+#ifndef DEFAULT_SAMPLE_APP_MSGDEFS_H
+#define DEFAULT_SAMPLE_APP_MSGDEFS_H
 
 #include "common_types.h"
 #include "sample_app_fcncodes.h"
 
 typedef struct SAMPLE_APP_DisplayParam_Payload
 {
-    uint32 ValU32;                            /**< 32 bit unsigned integer value */
-    int16  ValI16;                            /**< 16 bit signed integer value */
-    char   ValStr[SAMPLE_APP_STRING_VAL_LEN]; /**< An example string */
+    uint32 ValU32;                                    /**< 32 bit unsigned integer value */
+    int16  ValI16;                                    /**< 16 bit signed integer value */
+    char   ValStr[SAMPLE_APP_MISSION_STRING_VAL_LEN]; /**< An example string */
 } SAMPLE_APP_DisplayParam_Payload_t;
 
 /*************************************************************************/
@@ -43,8 +41,8 @@ typedef struct SAMPLE_APP_DisplayParam_Payload
 
 typedef struct SAMPLE_APP_HkTlm_Payload
 {
-    uint8 CommandErrorCounter;
     uint8 CommandCounter;
+    uint8 CommandErrorCounter;
     uint8 spare[2];
 } SAMPLE_APP_HkTlm_Payload_t;
 

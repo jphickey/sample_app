@@ -1,7 +1,7 @@
 /************************************************************************
- * NASA Docket No. GSC-18,719-1, and identified as “core Flight System: Bootes”
+ * NASA Docket No. GSC-19,200-1, and identified as "cFS Draco"
  *
- * Copyright (c) 2020 United States Government as represented by the
+ * Copyright (c) 2023 United States Government as represented by the
  * Administrator of the National Aeronautics and Space Administration.
  * All Rights Reserved.
  *
@@ -136,7 +136,8 @@ CFE_Status_t SAMPLE_APP_Init(void)
         /*
          ** Create Software Bus message pipe.
          */
-        status = CFE_SB_CreatePipe(&SAMPLE_APP_Data.CommandPipe, SAMPLE_APP_PIPE_DEPTH, SAMPLE_APP_PIPE_NAME);
+        status = CFE_SB_CreatePipe(&SAMPLE_APP_Data.CommandPipe, SAMPLE_APP_PLATFORM_PIPE_DEPTH,
+                                   SAMPLE_APP_PLATFORM_PIPE_NAME);
         if (status != CFE_SUCCESS)
         {
             CFE_EVS_SendEvent(SAMPLE_APP_CR_PIPE_ERR_EID, CFE_EVS_EventType_ERROR,
@@ -184,7 +185,7 @@ CFE_Status_t SAMPLE_APP_Init(void)
         }
         else
         {
-            status = CFE_TBL_Load(SAMPLE_APP_Data.TblHandles[0], CFE_TBL_SRC_FILE, SAMPLE_APP_TABLE_FILE);
+            status = CFE_TBL_Load(SAMPLE_APP_Data.TblHandles[0], CFE_TBL_SRC_FILE, SAMPLE_APP_PLATFORM_TABLE_FILE);
         }
 
         CFE_Config_GetVersionString(VersionString, SAMPLE_APP_CFG_MAX_VERSION_STR_LEN, "Sample App", SAMPLE_APP_VERSION,

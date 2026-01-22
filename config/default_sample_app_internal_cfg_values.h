@@ -1,7 +1,7 @@
 /************************************************************************
- * NASA Docket No. GSC-18,719-1, and identified as “core Flight System: Bootes”
+ * NASA Docket No. GSC-19,200-1, and identified as "cFS Draco"
  *
- * Copyright (c) 2020 United States Government as represented by the
+ * Copyright (c) 2023 United States Government as represented by the
  * Administrator of the National Aeronautics and Space Administration.
  * All Rights Reserved.
  *
@@ -25,21 +25,14 @@
  * to items in this file only affect the local module and will be transparent
  * to external entities that are using the public interface(s).
  *
- * @note This file may be overridden/superceded by mission-provided defintions
+ * @note This file may be overridden/superceded by mission-provided definitions
  * either by overriding this header or by generating definitions from a command/data
  * dictionary tool.
  */
-#ifndef SAMPLE_APP_INTERNAL_CFG_H
-#define SAMPLE_APP_INTERNAL_CFG_H
+#ifndef DEFAULT_SAMPLE_APP_INTERNAL_CFG_H
+#define DEFAULT_SAMPLE_APP_INTERNAL_CFG_H
 
-/***********************************************************************/
-#define SAMPLE_APP_PIPE_DEPTH 32 /* Depth of the Command Pipe for Application */
-#define SAMPLE_APP_PIPE_NAME  "SAMPLE_APP_CMD_PIPE"
-
-#define SAMPLE_APP_NUMBER_OF_TABLES 1 /* Number of Example Table(s) */
-
-#define SAMPLE_APP_TABLE_OUT_OF_RANGE_ERR_CODE -1
-
-#define SAMPLE_APP_TBL_ELEMENT_1_MAX 10
+/* Use the default configuration value for all */
+#define SAMPLE_APP_PLATFORM_CFGVAL(x) DEFAULT_SAMPLE_APP_PLATFORM_##x
 
 #endif

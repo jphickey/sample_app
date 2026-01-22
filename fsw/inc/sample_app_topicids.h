@@ -18,21 +18,18 @@
 
 /**
  * @file
- *   Specification for the SAMPLE_APP command and telemetry
- *   message data types.
- *
- * This is a compatibility header for the "sample_app_msg.h" file that has
- * traditionally provided the message definitions for cFS apps.
- *
- * @note This file may be overridden/superceded by mission-provided definitions
- * either by overriding this header or by generating definitions from a command/data
- * dictionary tool.
+ *   SAMPLE_APP Application Topic IDs
  */
-#ifndef DEFAULT_SAMPLE_APP_MSG_H
-#define DEFAULT_SAMPLE_APP_MSG_H
+#ifndef SAMPLE_APP_TOPICIDS_H
+#define SAMPLE_APP_TOPICIDS_H
 
-#include "sample_app_mission_cfg.h"
-#include "sample_app_msgdefs.h"
-#include "sample_app_msgstruct.h"
+#include "sample_app_topicid_values.h"
+
+#define SAMPLE_APP_MISSION_CMD_TOPICID             SAMPLE_APP_MISSION_TIDVAL(CMD)
+#define DEFAULT_SAMPLE_APP_MISSION_CMD_TOPICID     0x82
+#define SAMPLE_APP_MISSION_SEND_HK_TOPICID         SAMPLE_APP_MISSION_TIDVAL(SEND_HK)
+#define DEFAULT_SAMPLE_APP_MISSION_SEND_HK_TOPICID 0x83
+#define SAMPLE_APP_MISSION_HK_TLM_TOPICID          SAMPLE_APP_MISSION_TIDVAL(HK_TLM)
+#define DEFAULT_SAMPLE_APP_MISSION_HK_TLM_TOPICID  0x83
 
 #endif
